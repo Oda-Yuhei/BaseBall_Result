@@ -11,7 +11,7 @@
     End Sub
 
     Private Sub RegisterButton_Click(sender As Object, e As EventArgs) Handles RegisterButton.Click
-        Dim registerform As New RegisterMenuForm
+        Dim registerform As New RegisterPlayerForm
         registerform.Show()
     End Sub
 End Class

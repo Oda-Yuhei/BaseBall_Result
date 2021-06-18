@@ -31,8 +31,6 @@
                 MsgBox("規定打席欄に正しい数値を入力してください")
             End Try
         End If
-        ChartForm.Origin_RadioButton.Visible = True
-        ChartForm.Origin_RadioButton.Checked = True
 
         If PitcherComboBox.Text <> "(投手用)" Then '野手が選択されたとき
 

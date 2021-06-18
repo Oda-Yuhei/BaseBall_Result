@@ -7203,7 +7203,7 @@ Namespace PlayerManagementDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy1(ByVal parameter_position As String, ByVal Parametername1 As String, ByVal Parametername2 As String, ByVal Parametername3 As String, ByVal Parametername4 As String, ByVal Parametername5 As String) As PlayerManagementDataSet.vw_PlayerlistDataTable
+        Public Overloads Overridable Function GetDataBy11(ByVal parameter_position As String, ByVal Parametername1 As String, ByVal Parametername2 As String, ByVal Parametername3 As String, ByVal Parametername4 As String, ByVal Parametername5 As String) As PlayerManagementDataSet.vw_PlayerlistDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(6)
             If (parameter_position Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value

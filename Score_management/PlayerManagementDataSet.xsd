@@ -29,7 +29,7 @@
               <Mapping SourceColumn="Player_id" DataSetColumn="Player_id" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="FillBy">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT ID, name, rub, origin_school, position, TandB, comment, Player_id FROM dbo.vw_Playerlist
@@ -40,7 +40,7 @@ WHERE rub = @ParameterRub</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="FillBy1">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT ID, name, rub, origin_school, position, TandB, comment, Player_id FROM dbo.vw_Playerlist
@@ -52,7 +52,7 @@ LIKE '%' + @parameterRub + '%'</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy2info" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy2info" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="FillBy2info">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy2info" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy2info" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillBy2info">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT ID, name, rub, origin_school, position, TandB, comment, Player_id FROM dbo.vw_Playerlist
@@ -63,7 +63,7 @@ WHERE Player_id = @Parameter</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByAdvancedInfo" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByAdvancedInfo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="FillByAdvancedInfo">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByAdvancedInfo" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByAdvancedInfo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="FillByAdvancedInfo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT ID, name, rub, origin_school, position, TandB, comment, Player_id FROM dbo.vw_Playerlist
@@ -74,7 +74,7 @@ WHERE Player_id = @Parameter</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByInitial" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByInitial" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInitial">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByInitial" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByInitial" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="FillByInitial">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT ID, name, rub, origin_school, position, TandB, comment, Player_id FROM dbo.vw_Playerlist
@@ -98,7 +98,7 @@ rub LIKE @Parametername5</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByName_Position" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillByName_Position" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByName_Position">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByName_Position" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy11" GeneratorSourceName="FillByName_Position" GetMethodModifier="Public" GetMethodName="GetDataBy11" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="FillByName_Position">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT ID, name, rub, origin_school, position, TandB, comment, Player_id FROM dbo.vw_Playerlist
@@ -125,7 +125,7 @@ rub LIKE @Parametername5</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByPosition" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByPosition" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillByPosition">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByPosition" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByPosition" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="FillByPosition">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT ID, name, rub, origin_school, position, TandB, comment, Player_id FROM dbo.vw_Playerlist
@@ -137,7 +137,7 @@ LIKE @ParameterPosition</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByrubsarch" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByrubsarch" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="FillByrubsarch">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_Playerlist" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByrubsarch" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByrubsarch" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="FillByrubsarch">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT ID, name, rub, origin_school, position, TandB, comment, Player_id FROM dbo.vw_Playerlist
@@ -548,7 +548,7 @@ WHERE NOT AR = 0</CommandText>
               <Mapping SourceColumn="OBP" DataSetColumn="OBP" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_BatterResult" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByAdvancedBatter" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByAdvancedBatter" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillByAdvancedBatter">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_BatterResult" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByAdvancedBatter" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByAdvancedBatter" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByAdvancedBatter">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT Player_id, name, rub,Batter_id, ISNULL( AR, '0') as AR,
@@ -578,7 +578,7 @@ WHERE Batter_id = @Parameter_batter_id</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_BatterResult" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByposition" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByposition" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByposition">
+              <DbSource ConnectionRef="PlayerManagementConnectionString (MySettings)" DbObjectName="PlayerManagement.dbo.vw_BatterResult" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByposition" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByposition" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillByposition">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT Batter_id, Expr1, Expr2, H, HBP, HR, IBBandHBP, ID, LH, Player_id, SB, SH, SO, TandB, comment, name, position, rub FROM vw_BatterResult WHERE (position LIKE @parameter_position)</CommandText>
@@ -643,7 +643,7 @@ WHERE Batter_id = @Parameter_batter_id</CommandText>
   <xs:element name="PlayerManagementDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PlayerManagementDataSet" msprop:Generator_UserDSName="PlayerManagementDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vw_Playerlist" msprop:Generator_TableClassName="vw_PlayerlistDataTable" msprop:Generator_TableVarName="tablevw_Playerlist" msprop:Generator_TablePropName="vw_Playerlist" msprop:Generator_RowDeletingName="vw_PlayerlistRowDeleting" msprop:Generator_RowChangingName="vw_PlayerlistRowChanging" msprop:Generator_RowEvHandlerName="vw_PlayerlistRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_PlayerlistRowDeleted" msprop:Generator_UserTableName="vw_Playerlist" msprop:Generator_RowChangedName="vw_PlayerlistRowChanged" msprop:Generator_RowEvArgName="vw_PlayerlistRowChangeEvent" msprop:Generator_RowClassName="vw_PlayerlistRow">
+        <xs:element name="vw_Playerlist" msprop:Generator_TableClassName="vw_PlayerlistDataTable" msprop:Generator_TableVarName="tablevw_Playerlist" msprop:Generator_RowChangedName="vw_PlayerlistRowChanged" msprop:Generator_TablePropName="vw_Playerlist" msprop:Generator_RowDeletingName="vw_PlayerlistRowDeleting" msprop:Generator_RowChangingName="vw_PlayerlistRowChanging" msprop:Generator_RowEvHandlerName="vw_PlayerlistRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_PlayerlistRowDeleted" msprop:Generator_RowClassName="vw_PlayerlistRow" msprop:Generator_UserTableName="vw_Playerlist" msprop:Generator_RowEvArgName="vw_PlayerlistRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -699,7 +699,7 @@ WHERE Batter_id = @Parameter_batter_id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Batter" msprop:Generator_TableClassName="BatterDataTable" msprop:Generator_TableVarName="tableBatter" msprop:Generator_TablePropName="Batter" msprop:Generator_RowDeletingName="BatterRowDeleting" msprop:Generator_RowChangingName="BatterRowChanging" msprop:Generator_RowEvHandlerName="BatterRowChangeEventHandler" msprop:Generator_RowDeletedName="BatterRowDeleted" msprop:Generator_UserTableName="Batter" msprop:Generator_RowChangedName="BatterRowChanged" msprop:Generator_RowEvArgName="BatterRowChangeEvent" msprop:Generator_RowClassName="BatterRow">
+        <xs:element name="Batter" msprop:Generator_TableClassName="BatterDataTable" msprop:Generator_TableVarName="tableBatter" msprop:Generator_RowChangedName="BatterRowChanged" msprop:Generator_TablePropName="Batter" msprop:Generator_RowDeletingName="BatterRowDeleting" msprop:Generator_RowChangingName="BatterRowChanging" msprop:Generator_RowEvHandlerName="BatterRowChangeEventHandler" msprop:Generator_RowDeletedName="BatterRowDeleted" msprop:Generator_RowClassName="BatterRow" msprop:Generator_UserTableName="Batter" msprop:Generator_RowEvArgName="BatterRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Batter_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnBatter_id" msprop:Generator_ColumnPropNameInRow="Batter_id" msprop:Generator_ColumnPropNameInTable="Batter_idColumn" msprop:Generator_UserColumnName="Batter_id" type="xs:int" />
@@ -715,7 +715,7 @@ WHERE Batter_id = @Parameter_batter_id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Pitcher" msprop:Generator_TableClassName="PitcherDataTable" msprop:Generator_TableVarName="tablePitcher" msprop:Generator_TablePropName="Pitcher" msprop:Generator_RowDeletingName="PitcherRowDeleting" msprop:Generator_RowChangingName="PitcherRowChanging" msprop:Generator_RowEvHandlerName="PitcherRowChangeEventHandler" msprop:Generator_RowDeletedName="PitcherRowDeleted" msprop:Generator_UserTableName="Pitcher" msprop:Generator_RowChangedName="PitcherRowChanged" msprop:Generator_RowEvArgName="PitcherRowChangeEvent" msprop:Generator_RowClassName="PitcherRow">
+        <xs:element name="Pitcher" msprop:Generator_TableClassName="PitcherDataTable" msprop:Generator_TableVarName="tablePitcher" msprop:Generator_RowChangedName="PitcherRowChanged" msprop:Generator_TablePropName="Pitcher" msprop:Generator_RowDeletingName="PitcherRowDeleting" msprop:Generator_RowChangingName="PitcherRowChanging" msprop:Generator_RowEvHandlerName="PitcherRowChangeEventHandler" msprop:Generator_RowDeletedName="PitcherRowDeleted" msprop:Generator_RowClassName="PitcherRow" msprop:Generator_UserTableName="Pitcher" msprop:Generator_RowEvArgName="PitcherRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Pitcher_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPitcher_id" msprop:Generator_ColumnPropNameInRow="Pitcher_id" msprop:Generator_ColumnPropNameInTable="Pitcher_idColumn" msprop:Generator_UserColumnName="Pitcher_id" type="xs:short" />
@@ -732,7 +732,7 @@ WHERE Batter_id = @Parameter_batter_id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Player" msprop:Generator_TableClassName="PlayerDataTable" msprop:Generator_TableVarName="tablePlayer" msprop:Generator_TablePropName="Player" msprop:Generator_RowDeletingName="PlayerRowDeleting" msprop:Generator_RowChangingName="PlayerRowChanging" msprop:Generator_RowEvHandlerName="PlayerRowChangeEventHandler" msprop:Generator_RowDeletedName="PlayerRowDeleted" msprop:Generator_UserTableName="Player" msprop:Generator_RowChangedName="PlayerRowChanged" msprop:Generator_RowEvArgName="PlayerRowChangeEvent" msprop:Generator_RowClassName="PlayerRow">
+        <xs:element name="Player" msprop:Generator_TableClassName="PlayerDataTable" msprop:Generator_TableVarName="tablePlayer" msprop:Generator_RowChangedName="PlayerRowChanged" msprop:Generator_TablePropName="Player" msprop:Generator_RowDeletingName="PlayerRowDeleting" msprop:Generator_RowChangingName="PlayerRowChanging" msprop:Generator_RowEvHandlerName="PlayerRowChangeEventHandler" msprop:Generator_RowDeletedName="PlayerRowDeleted" msprop:Generator_RowClassName="PlayerRow" msprop:Generator_UserTableName="Player" msprop:Generator_RowEvArgName="PlayerRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Player_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPlayer_id" msprop:Generator_ColumnPropNameInRow="Player_id" msprop:Generator_ColumnPropNameInTable="Player_idColumn" msprop:Generator_UserColumnName="Player_id" type="xs:int" />
@@ -781,7 +781,7 @@ WHERE Batter_id = @Parameter_batter_id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Player_Result" msprop:Generator_TableClassName="Player_ResultDataTable" msprop:Generator_TableVarName="tablePlayer_Result" msprop:Generator_TablePropName="Player_Result" msprop:Generator_RowDeletingName="Player_ResultRowDeleting" msprop:Generator_RowChangingName="Player_ResultRowChanging" msprop:Generator_RowEvHandlerName="Player_ResultRowChangeEventHandler" msprop:Generator_RowDeletedName="Player_ResultRowDeleted" msprop:Generator_UserTableName="Player_Result" msprop:Generator_RowChangedName="Player_ResultRowChanged" msprop:Generator_RowEvArgName="Player_ResultRowChangeEvent" msprop:Generator_RowClassName="Player_ResultRow">
+        <xs:element name="Player_Result" msprop:Generator_TableClassName="Player_ResultDataTable" msprop:Generator_TableVarName="tablePlayer_Result" msprop:Generator_RowChangedName="Player_ResultRowChanged" msprop:Generator_TablePropName="Player_Result" msprop:Generator_RowDeletingName="Player_ResultRowDeleting" msprop:Generator_RowChangingName="Player_ResultRowChanging" msprop:Generator_RowEvHandlerName="Player_ResultRowChangeEventHandler" msprop:Generator_RowDeletedName="Player_ResultRowDeleted" msprop:Generator_RowClassName="Player_ResultRow" msprop:Generator_UserTableName="Player_Result" msprop:Generator_RowEvArgName="Player_ResultRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -809,7 +809,7 @@ WHERE Batter_id = @Parameter_batter_id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vw_PitcherResult" msprop:Generator_TableClassName="vw_PitcherResultDataTable" msprop:Generator_TableVarName="tablevw_PitcherResult" msprop:Generator_TablePropName="vw_PitcherResult" msprop:Generator_RowDeletingName="vw_PitcherResultRowDeleting" msprop:Generator_RowChangingName="vw_PitcherResultRowChanging" msprop:Generator_RowEvHandlerName="vw_PitcherResultRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_PitcherResultRowDeleted" msprop:Generator_UserTableName="vw_PitcherResult" msprop:Generator_RowChangedName="vw_PitcherResultRowChanged" msprop:Generator_RowEvArgName="vw_PitcherResultRowChangeEvent" msprop:Generator_RowClassName="vw_PitcherResultRow">
+        <xs:element name="vw_PitcherResult" msprop:Generator_TableClassName="vw_PitcherResultDataTable" msprop:Generator_TableVarName="tablevw_PitcherResult" msprop:Generator_RowChangedName="vw_PitcherResultRowChanged" msprop:Generator_TablePropName="vw_PitcherResult" msprop:Generator_RowDeletingName="vw_PitcherResultRowDeleting" msprop:Generator_RowChangingName="vw_PitcherResultRowChanging" msprop:Generator_RowEvHandlerName="vw_PitcherResultRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_PitcherResultRowDeleted" msprop:Generator_RowClassName="vw_PitcherResultRow" msprop:Generator_UserTableName="vw_PitcherResult" msprop:Generator_RowEvArgName="vw_PitcherResultRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -861,7 +861,7 @@ WHERE Batter_id = @Parameter_batter_id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vw_BatterResult" msprop:Generator_TableClassName="vw_BatterResultDataTable" msprop:Generator_TableVarName="tablevw_BatterResult" msprop:Generator_RowChangedName="vw_BatterResultRowChanged" msprop:Generator_TablePropName="vw_BatterResult" msprop:Generator_RowDeletingName="vw_BatterResultRowDeleting" msprop:Generator_RowChangingName="vw_BatterResultRowChanging" msprop:Generator_RowEvHandlerName="vw_BatterResultRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_BatterResultRowDeleted" msprop:Generator_RowClassName="vw_BatterResultRow" msprop:Generator_UserTableName="vw_BatterResult" msprop:Generator_RowEvArgName="vw_BatterResultRowChangeEvent">
+        <xs:element name="vw_BatterResult" msprop:Generator_TableClassName="vw_BatterResultDataTable" msprop:Generator_TableVarName="tablevw_BatterResult" msprop:Generator_TablePropName="vw_BatterResult" msprop:Generator_RowDeletingName="vw_BatterResultRowDeleting" msprop:Generator_RowChangingName="vw_BatterResultRowChanging" msprop:Generator_RowEvHandlerName="vw_BatterResultRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_BatterResultRowDeleted" msprop:Generator_UserTableName="vw_BatterResult" msprop:Generator_RowChangedName="vw_BatterResultRowChanged" msprop:Generator_RowEvArgName="vw_BatterResultRowChangeEvent" msprop:Generator_RowClassName="vw_BatterResultRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Player_id" msprop:Generator_ColumnVarNameInTable="columnPlayer_id" msprop:Generator_ColumnPropNameInRow="Player_id" msprop:Generator_ColumnPropNameInTable="Player_idColumn" msprop:Generator_UserColumnName="Player_id" type="xs:int" minOccurs="0" />
@@ -930,7 +930,7 @@ WHERE Batter_id = @Parameter_batter_id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AllresultView" msprop:Generator_TableClassName="AllresultViewDataTable" msprop:Generator_TableVarName="tableAllresultView" msprop:Generator_TablePropName="AllresultView" msprop:Generator_RowDeletingName="AllresultViewRowDeleting" msprop:Generator_RowChangingName="AllresultViewRowChanging" msprop:Generator_RowEvHandlerName="AllresultViewRowChangeEventHandler" msprop:Generator_RowDeletedName="AllresultViewRowDeleted" msprop:Generator_UserTableName="AllresultView" msprop:Generator_RowChangedName="AllresultViewRowChanged" msprop:Generator_RowEvArgName="AllresultViewRowChangeEvent" msprop:Generator_RowClassName="AllresultViewRow">
+        <xs:element name="AllresultView" msprop:Generator_TableClassName="AllresultViewDataTable" msprop:Generator_TableVarName="tableAllresultView" msprop:Generator_RowChangedName="AllresultViewRowChanged" msprop:Generator_TablePropName="AllresultView" msprop:Generator_RowDeletingName="AllresultViewRowDeleting" msprop:Generator_RowChangingName="AllresultViewRowChanging" msprop:Generator_RowEvHandlerName="AllresultViewRowChangeEventHandler" msprop:Generator_RowDeletedName="AllresultViewRowDeleted" msprop:Generator_RowClassName="AllresultViewRow" msprop:Generator_UserTableName="AllresultView" msprop:Generator_RowEvArgName="AllresultViewRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Batter_id" msprop:Generator_ColumnVarNameInTable="columnBatter_id" msprop:Generator_ColumnPropNameInRow="Batter_id" msprop:Generator_ColumnPropNameInTable="Batter_idColumn" msprop:Generator_UserColumnName="Batter_id" type="xs:int" minOccurs="0" />

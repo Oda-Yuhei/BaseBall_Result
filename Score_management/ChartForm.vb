@@ -3,16 +3,12 @@ Imports System.Configuration
 
 
 '----------------------------------------------
-'6月16日最終作業
-'batter_resultデータテーブルのクエリー構成編集
-'打率カラムの追加
+'6月17日最終作業
+'PlayerCardFormのデータ削除button データ編集buttonの実装準備
 
-'６月17日スタート作業
-'batter_resultデータテーブルのクエリー構成編集
-'出塁率カラムの追加
-
-'pittya_result
-'防御率KBB等の追加
+'６月18日スタート作業
+'PlayerCardFormのデータ削除button データ編集buttonの実装
+'終わったらPlayerCardForm終了
 '----------------------------------------------
 Public Class ChartForm
 
@@ -20,8 +16,6 @@ Public Class ChartForm
     Public farstcode As String
     Public positioncode As String
     Private Sub ChartForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: このコード行はデータを 'PlayerManagementDataSet.AllresultView' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.AllresultViewTableAdapter.Fill(Me.PlayerManagementDataSet.AllresultView)
         'TODO: このコード行はデータを 'PlayerManagementDataSet1.vw_PitcherResult' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
         Me.Vw_PitcherResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_PitcherResult)
         'TODO: このコード行はデータを 'PlayerManagementDataSet.vw_BatterResult' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
@@ -53,8 +47,6 @@ Public Class ChartForm
         ElseIf Batter_Result.Checked Then
             Position_sarch(fillter_position, 2)
             'BatterResultDataGridViewをsearch
-        ElseIf Origin_RadioButton.Checked Then
-            'OriginDataGridViewをsearch
         End If
 
 
@@ -191,7 +183,6 @@ Public Class ChartForm
         Me.PositionComboBox.Visible = True
         Me.name_ComboBox.Visible = True
         Me.EnterButton.Visible = True
-
     End Sub
 
     Private Sub Batter_Result_CheckedChanged(sender As Object, e As EventArgs) Handles Batter_Result.CheckedChanged
@@ -199,9 +190,9 @@ Public Class ChartForm
         Me.PitcherResultDataGridView.Visible = False
         Me.BatterResultDataGridView.Visible = True
 
-        Me.PositionComboBox.Visible = True
         Me.name_ComboBox.Visible = False
-        Me.EnterButton.Visible = True
+        Me.PositionComboBox.Visible = False
+        Me.EnterButton.Visible = False
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         advancedsarcform.Show()
@@ -216,7 +207,7 @@ Public Class ChartForm
 
         Dim PlayerID As Integer = defaultDataGridView.CurrentRow.Cells(0).Value
 
-        cardform.Vw_PlayerlistTableAdapter.FillByAdvancedInfo(cardform.PlayerManagementDataSet.vw_Playerlist, PlayerID.ToString("000"))
+        cardform.Vw_PlayerlistTableAdapter.FillByAdvancedInfo(cardform.PlayerManagementDataSet.vw_Playerlist, PlayerID)
         cardform.Vw_PitcherResultTableAdapter.FillByAdvancedPitcher(cardform.PlayerManagementDataSet.vw_PitcherResult, New System.Nullable(Of Integer)(PlayerID))
         cardform.Vw_BatterResultTableAdapter.FillByAdvancedBatter(cardform.PlayerManagementDataSet.vw_BatterResult, New System.Nullable(Of Integer)(PlayerID))
     End Sub
