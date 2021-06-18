@@ -2374,6 +2374,10 @@ Partial Public Class PlayerManagementDataSet
         
         Private columnKBB As Global.System.Data.DataColumn
         
+        Private columnExpr11 As Global.System.Data.DataColumn
+        
+        Private columnExpr21 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -2538,6 +2542,22 @@ Partial Public Class PlayerManagementDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Expr11Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnExpr11
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Expr21Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnExpr21
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2590,9 +2610,11 @@ Partial Public Class PlayerManagementDataSet
                     ByVal Expr1 As String,  _
                     ByVal Expr2 As String,  _
                     ByVal ERA As Double,  _
-                    ByVal KBB As Double) As vw_PitcherResultRow
+                    ByVal KBB As Double,  _
+                    ByVal Expr11 As Integer,  _
+                    ByVal Expr21 As Integer) As vw_PitcherResultRow
             Dim rowvw_PitcherResultRow As vw_PitcherResultRow = CType(Me.NewRow,vw_PitcherResultRow)
-            Dim columnValuesArray() As Object = New Object() {ID, name, rub, position, APP, IP, R, ER, K, B, Player_id, Pitcher_id, Expr1, Expr2, ERA, KBB}
+            Dim columnValuesArray() As Object = New Object() {ID, name, rub, position, APP, IP, R, ER, K, B, Player_id, Pitcher_id, Expr1, Expr2, ERA, KBB, Expr11, Expr21}
             rowvw_PitcherResultRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_PitcherResultRow)
             Return rowvw_PitcherResultRow
@@ -2631,6 +2653,8 @@ Partial Public Class PlayerManagementDataSet
             Me.columnExpr2 = MyBase.Columns("Expr2")
             Me.columnERA = MyBase.Columns("ERA")
             Me.columnKBB = MyBase.Columns("KBB")
+            Me.columnExpr11 = MyBase.Columns("Expr11")
+            Me.columnExpr21 = MyBase.Columns("Expr21")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2668,6 +2692,10 @@ Partial Public Class PlayerManagementDataSet
             MyBase.Columns.Add(Me.columnERA)
             Me.columnKBB = New Global.System.Data.DataColumn("KBB", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnKBB)
+            Me.columnExpr11 = New Global.System.Data.DataColumn("Expr11", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnExpr11)
+            Me.columnExpr21 = New Global.System.Data.DataColumn("Expr21", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnExpr21)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID, Me.columnPlayer_id, Me.columnPitcher_id}, false))
             Me.columnID.AllowDBNull = false
             Me.columnname.MaxLength = 15
@@ -2678,6 +2706,9 @@ Partial Public Class PlayerManagementDataSet
             Me.columnExpr2.MaxLength = 3
             Me.columnERA.ReadOnly = true
             Me.columnKBB.ReadOnly = true
+            Me.columnExpr11.AllowDBNull = false
+            Me.columnExpr11.Caption = "Expr1"
+            Me.columnExpr21.Caption = "Expr2"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5034,6 +5065,32 @@ Partial Public Class PlayerManagementDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Expr11() As Integer
+            Get
+                Return CType(Me(Me.tablevw_PitcherResult.Expr11Column),Integer)
+            End Get
+            Set
+                Me(Me.tablevw_PitcherResult.Expr11Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Expr21() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_PitcherResult.Expr21Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'vw_PitcherResult' にある列 'Expr21' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_PitcherResult.Expr21Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsnameNull() As Boolean
             Return Me.IsNull(Me.tablevw_PitcherResult.nameColumn)
         End Function
@@ -5198,6 +5255,18 @@ Partial Public Class PlayerManagementDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetKBBNull()
             Me(Me.tablevw_PitcherResult.KBBColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsExpr21Null() As Boolean
+            Return Me.IsNull(Me.tablevw_PitcherResult.Expr21Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetExpr21Null()
+            Me(Me.tablevw_PitcherResult.Expr21Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -9149,10 +9218,10 @@ Namespace PlayerManagementDataSetTableAdapters
             tableMapping.ColumnMappings.Add("B", "B")
             tableMapping.ColumnMappings.Add("Player_id", "Player_id")
             tableMapping.ColumnMappings.Add("Pitcher_id", "Pitcher_id")
-            tableMapping.ColumnMappings.Add("Expr1", "Expr1")
-            tableMapping.ColumnMappings.Add("Expr2", "Expr2")
             tableMapping.ColumnMappings.Add("ERA", "ERA")
             tableMapping.ColumnMappings.Add("KBB", "KBB")
+            tableMapping.ColumnMappings.Add("Expr1", "Expr11")
+            tableMapping.ColumnMappings.Add("Expr2", "Expr21")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -9169,16 +9238,16 @@ Namespace PlayerManagementDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, name, rub, position, APP, IP,ROUND(CONVERT(float,ER * 9 )/ CONVERT(flo"& _ 
-                "at,IP),2) as ERA,ROUND(CONVERT(float,K)/CONVERT(float,B),2) as KBB, R, ER, K, B,"& _ 
-                " Player_id, Pitcher_id, Expr1, Expr2 FROM dbo.vw_PitcherResult"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(0).CommandText = "SELECT ID, name, rub, position, APP, IP, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"IsNull(ROUND(CONVERT (float, nullif(ER"& _ 
+                ",0) * 9) / CONVERT (float, nullif(IP,0)), 2),CONVERT(float,666)) AS ERA, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"IsNul"& _ 
+                "l(ROUND(CONVERT (float, nullif(K,0)) / CONVERT (float, nullif(B,0)), 2), CONVERT"& _ 
+                "(float,666)) AS KBB,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"R, ER, K, B, Player_id, Pitcher_id, Expr1, Expr2 FROM vw_P"& _ 
+                "itcherResult"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT ID, name, rub, position, APP, IP,ROUND(CONVERT(float,ER * 9 )/ CONVERT(flo"& _ 
-                "at,IP),2) as ERA,ROUND(CONVERT(float,K)/CONVERT(float,B),2) as KBB, R, ER, K, B,"& _ 
-                " Player_id, Pitcher_id, Expr1, Expr2 FROM dbo.vw_PitcherResult"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Player_id "& _ 
-                "= @Parameter"
+            Me._commandCollection(1).CommandText = "SELECT APP, B, ER, Expr1, Expr2, ID, IP, K, Pitcher_id, Player_id, R, name, posit"& _ 
+                "ion, rub FROM vw_PitcherResult WHERE (Player_id = @Parameter)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parameter", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Player_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

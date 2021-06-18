@@ -271,11 +271,11 @@ Partial Class RankingForm
         'ExitButton
         '
         Me.ExitButton.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.ExitButton.Location = New System.Drawing.Point(896, 597)
+        Me.ExitButton.Location = New System.Drawing.Point(859, 597)
         Me.ExitButton.Name = "ExitButton"
         Me.ExitButton.Size = New System.Drawing.Size(140, 51)
         Me.ExitButton.TabIndex = 22
-        Me.ExitButton.Text = "終了"
+        Me.ExitButton.Text = "更新"
         Me.ExitButton.UseVisualStyleBackColor = True
         '
         'DataGridView10
@@ -302,7 +302,7 @@ Partial Class RankingForm
         '
         Me.OptionButton.Location = New System.Drawing.Point(660, 352)
         Me.OptionButton.Name = "OptionButton"
-        Me.OptionButton.Size = New System.Drawing.Size(75, 23)
+        Me.OptionButton.Size = New System.Drawing.Size(122, 23)
         Me.OptionButton.TabIndex = 25
         Me.OptionButton.Text = "規定値設定"
         Me.OptionButton.UseVisualStyleBackColor = True

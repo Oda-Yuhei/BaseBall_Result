@@ -84,10 +84,10 @@ Public Class PlayerCardForm
             Catch ex As Exception
 
             End Try
-            Me.Player_ResultTableAdapter.Fill(Me.PlayerManagementDataSet.Player_Result)
-            Me.Vw_PlayerlistTableAdapter.Fill(Me.PlayerManagementDataSet.vw_Playerlist)
-            Me.Vw_PitcherResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_PitcherResult)
-            Me.Vw_BatterResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_BatterResult)
+
+            ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
+            ChartForm.Vw_PitcherResultTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_PitcherResult)
+            ChartForm.Vw_BatterResultTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_BatterResult)
             Me.Close()
 
         ElseIf result = DialogResult.Cancel Then
