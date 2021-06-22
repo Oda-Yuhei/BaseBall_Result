@@ -30,9 +30,28 @@ Partial Class ChartForm
         Me.Batter_Result = New System.Windows.Forms.RadioButton()
         Me.name_ComboBox = New System.Windows.Forms.ComboBox()
         Me.defaultDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Vw_PlayerlistBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PlayerManagementDataSet = New Score_management.PlayerManagementDataSet()
         Me.BatterResultDataGridView = New System.Windows.Forms.DataGridView()
+        Me.average = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OBP = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VwPlayerlistBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PitcherResultDataGridView = New System.Windows.Forms.DataGridView()
+        Me.Player_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Pitcher_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VwPitcherResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PlayerManagementDataSet = New Score_management.PlayerManagementDataSet()
+        Me.Vw_PlayerlistBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PlayeridDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BatteridDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -40,8 +59,6 @@ Partial Class ChartForm
         Me.TandBDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PositionDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ARDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.average = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OBP = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.HDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LHDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.HRDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -55,33 +72,16 @@ Partial Class ChartForm
         Me.Expr2DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IDDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Vw_BatterResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PitcherResultDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VwPitcherResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.VwPlayerlistBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AllresultViewBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_PlayerlistTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.vw_PlayerlistTableAdapter()
         Me.TableAdapterManager = New Score_management.PlayerManagementDataSetTableAdapters.TableAdapterManager()
         Me.Vw_PitcherResultTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.vw_PitcherResultTableAdapter()
         Me.Vw_BatterResultTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.vw_BatterResultTableAdapter()
         Me.AllresultViewTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.AllresultViewTableAdapter()
-        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PlayerManagementDataSet1 = New Score_management.PlayerManagementDataSet()
+        Me.VwPitcherResultBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RubDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PositionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -89,14 +89,16 @@ Partial Class ChartForm
         Me.origin_school = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.comment = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.defaultDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Vw_PlayerlistBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PlayerManagementDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BatterResultDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Vw_BatterResultBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwPlayerlistBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PitcherResultDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwPitcherResultBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwPlayerlistBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PlayerManagementDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Vw_PlayerlistBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Vw_BatterResultBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AllresultViewBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PlayerManagementDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwPitcherResultBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PositionComboBox
@@ -177,7 +179,7 @@ Partial Class ChartForm
         Me.defaultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.defaultDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders
         Me.defaultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.defaultDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.ID, Me.NameDataGridViewTextBoxColumn, Me.RubDataGridViewTextBoxColumn, Me.PositionDataGridViewTextBoxColumn, Me.TandB, Me.origin_school, Me.comment})
+        Me.defaultDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.IDDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.RubDataGridViewTextBoxColumn, Me.PositionDataGridViewTextBoxColumn, Me.TandB, Me.origin_school, Me.comment})
         Me.defaultDataGridView.DataSource = Me.Vw_PlayerlistBindingSource
         Me.defaultDataGridView.Location = New System.Drawing.Point(12, 102)
         Me.defaultDataGridView.Name = "defaultDataGridView"
@@ -185,18 +187,8 @@ Partial Class ChartForm
         Me.defaultDataGridView.RowHeadersVisible = False
         Me.defaultDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
         Me.defaultDataGridView.RowTemplate.Height = 24
-        Me.defaultDataGridView.Size = New System.Drawing.Size(1061, 392)
+        Me.defaultDataGridView.Size = New System.Drawing.Size(1170, 424)
         Me.defaultDataGridView.TabIndex = 0
-        '
-        'Vw_PlayerlistBindingSource
-        '
-        Me.Vw_PlayerlistBindingSource.DataMember = "vw_Playerlist"
-        Me.Vw_PlayerlistBindingSource.DataSource = Me.PlayerManagementDataSet
-        '
-        'PlayerManagementDataSet
-        '
-        Me.PlayerManagementDataSet.DataSetName = "PlayerManagementDataSet"
-        Me.PlayerManagementDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BatterResultDataGridView
         '
@@ -218,8 +210,176 @@ Partial Class ChartForm
         Me.BatterResultDataGridView.RowHeadersVisible = False
         Me.BatterResultDataGridView.RowHeadersWidth = 51
         Me.BatterResultDataGridView.RowTemplate.Height = 24
-        Me.BatterResultDataGridView.Size = New System.Drawing.Size(1061, 392)
+        Me.BatterResultDataGridView.Size = New System.Drawing.Size(1170, 424)
         Me.BatterResultDataGridView.TabIndex = 10
+        '
+        'average
+        '
+        Me.average.DataPropertyName = "average"
+        Me.average.HeaderText = "打率"
+        Me.average.MinimumWidth = 6
+        Me.average.Name = "average"
+        Me.average.ReadOnly = True
+        Me.average.Width = 66
+        '
+        'OBP
+        '
+        Me.OBP.DataPropertyName = "OBP"
+        Me.OBP.HeaderText = "出塁率"
+        Me.OBP.MinimumWidth = 6
+        Me.OBP.Name = "OBP"
+        Me.OBP.ReadOnly = True
+        Me.OBP.Width = 81
+        '
+        'PitcherResultDataGridView
+        '
+        Me.PitcherResultDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PitcherResultDataGridView.AutoGenerateColumns = False
+        Me.PitcherResultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.PitcherResultDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.PitcherResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.PitcherResultDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.Player_id, Me.Pitcher_id, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10})
+        Me.PitcherResultDataGridView.DataSource = Me.VwPitcherResultBindingSource
+        Me.PitcherResultDataGridView.Location = New System.Drawing.Point(12, 102)
+        Me.PitcherResultDataGridView.Name = "PitcherResultDataGridView"
+        Me.PitcherResultDataGridView.RowHeadersVisible = False
+        Me.PitcherResultDataGridView.RowHeadersWidth = 51
+        Me.PitcherResultDataGridView.RowTemplate.Height = 24
+        Me.PitcherResultDataGridView.Size = New System.Drawing.Size(1170, 424)
+        Me.PitcherResultDataGridView.TabIndex = 10
+        '
+        'Player_id
+        '
+        Me.Player_id.DataPropertyName = "Player_id"
+        Me.Player_id.HeaderText = "Player_id"
+        Me.Player_id.MinimumWidth = 6
+        Me.Player_id.Name = "Player_id"
+        Me.Player_id.Visible = False
+        Me.Player_id.Width = 90
+        '
+        'Pitcher_id
+        '
+        Me.Pitcher_id.DataPropertyName = "Pitcher_id"
+        Me.Pitcher_id.HeaderText = "Pitcher_id"
+        Me.Pitcher_id.MinimumWidth = 6
+        Me.Pitcher_id.Name = "Pitcher_id"
+        Me.Pitcher_id.Visible = False
+        Me.Pitcher_id.Width = 97
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.Width = 50
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "name"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "名前"
+        Me.DataGridViewTextBoxColumn2.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Width = 66
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "rub"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "ふりがな"
+        Me.DataGridViewTextBoxColumn3.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Width = 82
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "position"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "ポジション"
+        Me.DataGridViewTextBoxColumn4.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 91
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "APP"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "試合数"
+        Me.DataGridViewTextBoxColumn5.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 81
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "IP"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "投球回数"
+        Me.DataGridViewTextBoxColumn6.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Width = 96
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "ERA"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "防御率"
+        Me.DataGridViewTextBoxColumn17.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        Me.DataGridViewTextBoxColumn17.Width = 81
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "KBB"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "K/BB"
+        Me.DataGridViewTextBoxColumn18.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.ReadOnly = True
+        Me.DataGridViewTextBoxColumn18.Width = 73
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "R"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "失点"
+        Me.DataGridViewTextBoxColumn7.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.Width = 66
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "ER"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "自責点"
+        Me.DataGridViewTextBoxColumn8.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.Width = 81
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "K"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "奪三振"
+        Me.DataGridViewTextBoxColumn9.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.Width = 81
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "B"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "四球"
+        Me.DataGridViewTextBoxColumn10.MinimumWidth = 6
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.Width = 66
+        '
+        'VwPitcherResultBindingSource
+        '
+        Me.VwPitcherResultBindingSource.DataMember = "vw_PitcherResult"
+        Me.VwPitcherResultBindingSource.DataSource = Me.PlayerManagementDataSet
+        '
+        'PlayerManagementDataSet
+        '
+        Me.PlayerManagementDataSet.DataSetName = "PlayerManagementDataSet"
+        Me.PlayerManagementDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Vw_PlayerlistBindingSource
+        '
+        Me.Vw_PlayerlistBindingSource.DataMember = "vw_Playerlist"
+        Me.Vw_PlayerlistBindingSource.DataSource = Me.PlayerManagementDataSet
         '
         'PlayeridDataGridViewTextBoxColumn1
         '
@@ -285,24 +445,6 @@ Partial Class ChartForm
         Me.ARDataGridViewTextBoxColumn.Name = "ARDataGridViewTextBoxColumn"
         Me.ARDataGridViewTextBoxColumn.ReadOnly = True
         Me.ARDataGridViewTextBoxColumn.Width = 81
-        '
-        'average
-        '
-        Me.average.DataPropertyName = "average"
-        Me.average.HeaderText = "打率"
-        Me.average.MinimumWidth = 6
-        Me.average.Name = "average"
-        Me.average.ReadOnly = True
-        Me.average.Width = 66
-        '
-        'OBP
-        '
-        Me.OBP.DataPropertyName = "OBP"
-        Me.OBP.HeaderText = "出塁率"
-        Me.OBP.MinimumWidth = 6
-        Me.OBP.Name = "OBP"
-        Me.OBP.ReadOnly = True
-        Me.OBP.Width = 81
         '
         'HDataGridViewTextBoxColumn
         '
@@ -420,180 +562,6 @@ Partial Class ChartForm
         Me.Vw_BatterResultBindingSource.DataMember = "vw_BatterResult"
         Me.Vw_BatterResultBindingSource.DataSource = Me.PlayerManagementDataSet
         '
-        'PitcherResultDataGridView
-        '
-        Me.PitcherResultDataGridView.AllowUserToAddRows = False
-        Me.PitcherResultDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PitcherResultDataGridView.AutoGenerateColumns = False
-        Me.PitcherResultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.PitcherResultDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.PitcherResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.PitcherResultDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn1})
-        Me.PitcherResultDataGridView.DataSource = Me.VwPitcherResultBindingSource
-        Me.PitcherResultDataGridView.Location = New System.Drawing.Point(13, 102)
-        Me.PitcherResultDataGridView.Name = "PitcherResultDataGridView"
-        Me.PitcherResultDataGridView.ReadOnly = True
-        Me.PitcherResultDataGridView.RowHeadersVisible = False
-        Me.PitcherResultDataGridView.RowHeadersWidth = 51
-        Me.PitcherResultDataGridView.RowTemplate.Height = 24
-        Me.PitcherResultDataGridView.Size = New System.Drawing.Size(1060, 392)
-        Me.PitcherResultDataGridView.TabIndex = 12
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "Player_id"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn11.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.ReadOnly = True
-        Me.DataGridViewTextBoxColumn11.Width = 50
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "name"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "名前"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 66
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "rub"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "ふりがな"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 82
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "position"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "ポジション"
-        Me.DataGridViewTextBoxColumn4.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 91
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "APP"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "登板回数"
-        Me.DataGridViewTextBoxColumn5.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 96
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "IP"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "投球回数"
-        Me.DataGridViewTextBoxColumn6.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 96
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "ERA"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "防御率"
-        Me.DataGridViewTextBoxColumn15.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.ReadOnly = True
-        Me.DataGridViewTextBoxColumn15.Width = 81
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "KBB"
-        Me.DataGridViewTextBoxColumn16.HeaderText = "K/BB"
-        Me.DataGridViewTextBoxColumn16.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.ReadOnly = True
-        Me.DataGridViewTextBoxColumn16.Width = 73
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "R"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "失点"
-        Me.DataGridViewTextBoxColumn7.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Width = 66
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "ER"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "自責点"
-        Me.DataGridViewTextBoxColumn8.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Width = 81
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "K"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "奪三振"
-        Me.DataGridViewTextBoxColumn9.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        Me.DataGridViewTextBoxColumn9.Width = 81
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "B"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "四球"
-        Me.DataGridViewTextBoxColumn10.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        Me.DataGridViewTextBoxColumn10.Width = 66
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "Pitcher_id"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "Pitcher_id"
-        Me.DataGridViewTextBoxColumn12.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.ReadOnly = True
-        Me.DataGridViewTextBoxColumn12.Visible = False
-        Me.DataGridViewTextBoxColumn12.Width = 97
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Expr1"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Expr1"
-        Me.DataGridViewTextBoxColumn13.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.ReadOnly = True
-        Me.DataGridViewTextBoxColumn13.Visible = False
-        Me.DataGridViewTextBoxColumn13.Width = 71
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Expr2"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "Expr2"
-        Me.DataGridViewTextBoxColumn14.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.ReadOnly = True
-        Me.DataGridViewTextBoxColumn14.Visible = False
-        Me.DataGridViewTextBoxColumn14.Width = 71
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Visible = False
-        Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'VwPitcherResultBindingSource
-        '
-        Me.VwPitcherResultBindingSource.DataMember = "vw_PitcherResult"
-        Me.VwPitcherResultBindingSource.DataSource = Me.PlayerManagementDataSet
-        '
         'AllresultViewBindingSource
         '
         Me.AllresultViewBindingSource.DataMember = "AllresultView"
@@ -625,6 +593,25 @@ Partial Class ChartForm
         '
         Me.AllresultViewTableAdapter.ClearBeforeFill = True
         '
+        'PlayerManagementDataSet1
+        '
+        Me.PlayerManagementDataSet1.DataSetName = "PlayerManagementDataSet"
+        Me.PlayerManagementDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VwPitcherResultBindingSource1
+        '
+        Me.VwPitcherResultBindingSource1.DataMember = "vw_PitcherResult"
+        Me.VwPitcherResultBindingSource1.DataSource = Me.PlayerManagementDataSet1
+        '
+        'ID
+        '
+        Me.ID.DataPropertyName = "Player_id"
+        Me.ID.HeaderText = "ID"
+        Me.ID.MinimumWidth = 6
+        Me.ID.Name = "ID"
+        Me.ID.ReadOnly = True
+        Me.ID.Width = 50
+        '
         'IDDataGridViewTextBoxColumn
         '
         Me.IDDataGridViewTextBoxColumn.DataPropertyName = "ID"
@@ -633,16 +620,7 @@ Partial Class ChartForm
         Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
         Me.IDDataGridViewTextBoxColumn.ReadOnly = True
         Me.IDDataGridViewTextBoxColumn.Visible = False
-        Me.IDDataGridViewTextBoxColumn.Width = 27
-        '
-        'ID
-        '
-        Me.ID.DataPropertyName = "Player_id"
-        Me.ID.HeaderText = "playerID"
-        Me.ID.MinimumWidth = 6
-        Me.ID.Name = "ID"
-        Me.ID.ReadOnly = True
-        Me.ID.Width = 87
+        Me.IDDataGridViewTextBoxColumn.Width = 50
         '
         'NameDataGridViewTextBoxColumn
         '
@@ -702,28 +680,30 @@ Partial Class ChartForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1085, 506)
+        Me.ClientSize = New System.Drawing.Size(1194, 538)
         Me.Controls.Add(Me.Batter_Result)
         Me.Controls.Add(Me.Pitcher_Result)
         Me.Controls.Add(Me.Basic_information)
         Me.Controls.Add(Me.EnterButton)
         Me.Controls.Add(Me.PositionComboBox)
         Me.Controls.Add(Me.name_ComboBox)
+        Me.Controls.Add(Me.PitcherResultDataGridView)
         Me.Controls.Add(Me.defaultDataGridView)
         Me.Controls.Add(Me.BatterResultDataGridView)
-        Me.Controls.Add(Me.PitcherResultDataGridView)
         Me.MinimumSize = New System.Drawing.Size(530, 500)
         Me.Name = "ChartForm"
         Me.Text = "選手一覧"
         CType(Me.defaultDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Vw_PlayerlistBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PlayerManagementDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BatterResultDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Vw_BatterResultBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwPlayerlistBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PitcherResultDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwPitcherResultBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwPlayerlistBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PlayerManagementDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Vw_PlayerlistBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Vw_BatterResultBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AllresultViewBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PlayerManagementDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwPitcherResultBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -744,7 +724,6 @@ Partial Class ChartForm
     Friend WithEvents BatterResultDataGridView As DataGridView
     Friend WithEvents Vw_BatterResultBindingSource As BindingSource
     Friend WithEvents Vw_BatterResultTableAdapter As PlayerManagementDataSetTableAdapters.vw_BatterResultTableAdapter
-    Friend WithEvents PitcherResultDataGridView As DataGridView
     Friend WithEvents VwPlayerlistBindingSource As BindingSource
     Friend WithEvents AllresultViewBindingSource As BindingSource
     Friend WithEvents AllresultViewTableAdapter As PlayerManagementDataSetTableAdapters.AllresultViewTableAdapter
@@ -769,24 +748,27 @@ Partial Class ChartForm
     Friend WithEvents Expr1DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents Expr2DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents IDDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents PlayerManagementDataSet1 As PlayerManagementDataSet
+    Friend WithEvents VwPitcherResultBindingSource1 As BindingSource
+    Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
+    Friend WithEvents PitcherResultDataGridView As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents Player_id As DataGridViewTextBoxColumn
+    Friend WithEvents Pitcher_id As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents IDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ID As DataGridViewTextBoxColumn
+    Friend WithEvents IDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents RubDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PositionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

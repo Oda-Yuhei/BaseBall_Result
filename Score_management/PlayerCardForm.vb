@@ -1,13 +1,12 @@
 ﻿Imports System.Data.SqlClient
 Public Class PlayerCardForm
     Private Sub PlayerCardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Vw_PitcherResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_PitcherResult)
         'TODO: このコード行はデータを 'PlayerManagementDataSet.Player_Result' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
         Me.Player_ResultTableAdapter.Fill(Me.PlayerManagementDataSet.Player_Result)
 
         'TODO: このコード行はデータを 'PlayerManagementDataSet.vw_Playerlist' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
         Me.Vw_PlayerlistTableAdapter.Fill(Me.PlayerManagementDataSet.vw_Playerlist)
-        'TODO: このコード行はデータを 'PlayerManagementDataSet.vw_PitcherResult' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.Vw_PitcherResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_PitcherResult)
         'TODO: このコード行はデータを 'PlayerManagementDataSet.vw_BatterResult' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
         Me.Vw_BatterResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_BatterResult)
 

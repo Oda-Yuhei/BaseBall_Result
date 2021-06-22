@@ -1,15 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Configuration
-
-
-'----------------------------------------------
-'6月17日最終作業
-'PlayerCardFormのデータ削除button データ編集buttonの実装準備
-
-'６月18日スタート作業
-'PlayerCardFormのデータ削除button データ編集buttonの実装
-'終わったらPlayerCardForm終了
-'----------------------------------------------
 Public Class ChartForm
 
     Public advancedsarcform As New AdvancedSearchForm
@@ -29,24 +19,13 @@ Public Class ChartForm
         Dim str As String
         str = name_ComboBox.SelectedItem
         Dim fillter_position As String = PositionComboBox.SelectedItem
-
-        If Basic_information.Checked Then
-            'defaultDataGridViewをsearch
-            If Not name_ComboBox.Text = "(五十音)" And PositionComboBox.Text = "(ポジション)" Then
-                Initial_sarch(str)
-            ElseIf name_ComboBox.Text = "(五十音)" And Not PositionComboBox.Text = "(ポジション)" Then
-                Position_sarch(fillter_position, 1)
-            Else
-                Initial_Position_sarch(str, fillter_position)
-            End If
-
-
-        ElseIf Pitcher_Result.Checked Then
-            'PitcherResultDataGridViewをsearch
-
-        ElseIf Batter_Result.Checked Then
-            Position_sarch(fillter_position, 2)
-            'BatterResultDataGridViewをsearch
+        'defaultDataGridViewをsearch
+        If Not name_ComboBox.Text = "(五十音)" And PositionComboBox.Text = "(ポジション)" Then
+            Initial_sarch(str)
+        ElseIf name_ComboBox.Text = "(五十音)" And Not PositionComboBox.Text = "(ポジション)" Then
+            Position_sarch(fillter_position, 1)
+        Else
+            Initial_Position_sarch(str, fillter_position)
         End If
 
 
@@ -206,6 +185,28 @@ Public Class ChartForm
         cardform.Show()
 
         Dim PlayerID As Integer = defaultDataGridView.CurrentRow.Cells(0).Value
+
+        cardform.Vw_PlayerlistTableAdapter.FillByAdvancedInfo(cardform.PlayerManagementDataSet.vw_Playerlist, PlayerID)
+        cardform.Vw_PitcherResultTableAdapter.FillByAdvancedPitcher(cardform.PlayerManagementDataSet.vw_PitcherResult, New System.Nullable(Of Integer)(PlayerID))
+        cardform.Vw_BatterResultTableAdapter.FillByAdvancedBatter(cardform.PlayerManagementDataSet.vw_BatterResult, New System.Nullable(Of Integer)(PlayerID))
+    End Sub
+
+    Private Sub BatterResultDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles BatterResultDataGridView.CellContentClick
+        Dim cardform As New PlayerCardForm
+        cardform.Show()
+
+        Dim PlayerID As Integer = BatterResultDataGridView.CurrentRow.Cells(0).Value
+
+        cardform.Vw_PlayerlistTableAdapter.FillByAdvancedInfo(cardform.PlayerManagementDataSet.vw_Playerlist, PlayerID)
+        cardform.Vw_PitcherResultTableAdapter.FillByAdvancedPitcher(cardform.PlayerManagementDataSet.vw_PitcherResult, New System.Nullable(Of Integer)(PlayerID))
+        cardform.Vw_BatterResultTableAdapter.FillByAdvancedBatter(cardform.PlayerManagementDataSet.vw_BatterResult, New System.Nullable(Of Integer)(PlayerID))
+    End Sub
+
+    Private Sub PitcherResultDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles PitcherResultDataGridView.CellContentClick
+        Dim cardform As New PlayerCardForm
+        cardform.Show()
+
+        Dim PlayerID As Integer = PitcherResultDataGridView.CurrentRow.Cells(0).Value
 
         cardform.Vw_PlayerlistTableAdapter.FillByAdvancedInfo(cardform.PlayerManagementDataSet.vw_Playerlist, PlayerID)
         cardform.Vw_PitcherResultTableAdapter.FillByAdvancedPitcher(cardform.PlayerManagementDataSet.vw_PitcherResult, New System.Nullable(Of Integer)(PlayerID))
