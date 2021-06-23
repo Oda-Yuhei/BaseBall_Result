@@ -10,6 +10,15 @@ Public Class PlayerCardForm
         'TODO: このコード行はデータを 'PlayerManagementDataSet.vw_BatterResult' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
         Me.Vw_BatterResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_BatterResult)
 
+        If Not LogonForm.Auth = True Then
+            Button.Visible = False
+            Button1.Visible = False
+        Else
+            Button.Visible = True
+            Button1.Visible = True
+
+        End If
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

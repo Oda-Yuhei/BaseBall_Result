@@ -27,18 +27,15 @@ Partial Class SettingForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.EnterButton = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -91,50 +88,20 @@ Partial Class SettingForm
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "閲覧者権限"
         '
-        'RadioButton1
-        '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(108, 261)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(52, 19)
-        Me.RadioButton1.TabIndex = 5
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "する"
-        Me.RadioButton1.UseVisualStyleBackColor = True
-        '
-        'RadioButton2
-        '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(166, 261)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(64, 19)
-        Me.RadioButton2.TabIndex = 6
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "しない"
-        Me.RadioButton2.UseVisualStyleBackColor = True
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label6.Location = New System.Drawing.Point(99, 227)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(110, 22)
-        Me.Label6.TabIndex = 7
-        Me.Label6.Text = "パスワード請求"
-        '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(257, 100)
         Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox1.Size = New System.Drawing.Size(144, 22)
         Me.TextBox1.TabIndex = 8
+        Me.TextBox1.Visible = False
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label7.Location = New System.Drawing.Point(99, 294)
+        Me.Label7.Location = New System.Drawing.Point(99, 247)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(127, 22)
         Me.Label7.TabIndex = 9
@@ -144,7 +111,7 @@ Partial Class SettingForm
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label8.Location = New System.Drawing.Point(99, 334)
+        Me.Label8.Location = New System.Drawing.Point(99, 287)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(61, 22)
         Me.Label8.TabIndex = 10
@@ -154,71 +121,74 @@ Partial Class SettingForm
         '
         Me.TextBox2.Location = New System.Drawing.Point(257, 137)
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox2.Size = New System.Drawing.Size(144, 22)
         Me.TextBox2.TabIndex = 11
+        Me.TextBox2.Visible = False
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(257, 294)
+        Me.TextBox3.Location = New System.Drawing.Point(257, 247)
         Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox3.Size = New System.Drawing.Size(144, 22)
         Me.TextBox3.TabIndex = 12
+        Me.TextBox3.Visible = False
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(257, 334)
+        Me.TextBox4.Location = New System.Drawing.Point(257, 287)
         Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox4.Size = New System.Drawing.Size(144, 22)
         Me.TextBox4.TabIndex = 13
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Meiryo UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label9.Location = New System.Drawing.Point(445, 13)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(117, 25)
-        Me.Label9.TabIndex = 14
-        Me.Label9.Text = "サーバー設定"
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.CheckBox1.Location = New System.Drawing.Point(584, 19)
-        Me.CheckBox1.MinimumSize = New System.Drawing.Size(112, 23)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(112, 23)
-        Me.CheckBox1.TabIndex = 15
-        Me.CheckBox1.Text = "Read Mode"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.TextBox4.Visible = False
         '
         'EnterButton
         '
-        Me.EnterButton.Location = New System.Drawing.Point(394, 398)
+        Me.EnterButton.Location = New System.Drawing.Point(161, 387)
         Me.EnterButton.Name = "EnterButton"
         Me.EnterButton.Size = New System.Drawing.Size(76, 40)
         Me.EnterButton.TabIndex = 16
         Me.EnterButton.Text = "登録"
         Me.EnterButton.UseVisualStyleBackColor = True
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.CheckBox1.Location = New System.Drawing.Point(188, 190)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(85, 23)
+        Me.CheckBox1.TabIndex = 17
+        Me.CheckBox1.Text = "変更する"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.CheckBox2.Location = New System.Drawing.Point(188, 62)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(85, 23)
+        Me.CheckBox2.TabIndex = 18
+        Me.CheckBox2.Text = "変更する"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
         'SettingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.EnterButton)
+        Me.ClientSize = New System.Drawing.Size(442, 450)
+        Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.CheckBox1)
-        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.EnterButton)
         Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.RadioButton2)
-        Me.Controls.Add(Me.RadioButton1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -236,16 +206,13 @@ Partial Class SettingForm
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents Label6 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents Label9 As Label
-    Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents EnterButton As Button
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents CheckBox2 As CheckBox
 End Class
