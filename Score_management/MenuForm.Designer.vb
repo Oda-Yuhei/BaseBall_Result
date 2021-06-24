@@ -51,9 +51,9 @@ Partial Class MenuForm
         'RegisterButton
         '
         Me.RegisterButton.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RegisterButton.Location = New System.Drawing.Point(373, 56)
+        Me.RegisterButton.Location = New System.Drawing.Point(103, 203)
         Me.RegisterButton.Name = "RegisterButton"
-        Me.RegisterButton.Size = New System.Drawing.Size(113, 114)
+        Me.RegisterButton.Size = New System.Drawing.Size(113, 44)
         Me.RegisterButton.TabIndex = 3
         Me.RegisterButton.Text = "選手登録"
         Me.RegisterButton.UseVisualStyleBackColor = True
@@ -61,7 +61,7 @@ Partial Class MenuForm
         'SettingButton
         '
         Me.SettingButton.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SettingButton.Location = New System.Drawing.Point(373, 203)
+        Me.SettingButton.Location = New System.Drawing.Point(242, 203)
         Me.SettingButton.Name = "SettingButton"
         Me.SettingButton.Size = New System.Drawing.Size(113, 44)
         Me.SettingButton.TabIndex = 4
@@ -72,7 +72,7 @@ Partial Class MenuForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(520, 289)
+        Me.ClientSize = New System.Drawing.Size(386, 289)
         Me.Controls.Add(Me.SettingButton)
         Me.Controls.Add(Me.RegisterButton)
         Me.Controls.Add(Me.RankingButton)

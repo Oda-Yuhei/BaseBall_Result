@@ -1,6 +1,16 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Text.RegularExpressions
 Public Class RegisterPlayerForm
     Private Sub EnterButton_Click(sender As Object, e As EventArgs) Handles EnterButton.Click
+        If intjadge() Then '成績textboxの入力が正しいのか判断
+            Return
+        End If
+        If strjadge() Then '個人情報textboxの入力が正しいのか判断
+            Return
+        End If
+        If Not Chk_Hiragana(RubTextBox.Text) Then
+            Return
+        End If
         Dim result As DialogResult = MessageBox.Show("データを登録します", "登録", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2)
         If result = DialogResult.OK Then
             Try
@@ -54,7 +64,7 @@ Public Class RegisterPlayerForm
                             MsgBox(ex.StackTrace)
 
                         End Try
-                        End Using
+                    End Using
 
                     Sql = "INSERT INTO Player VALUES(@name, @rub, @origin_school, @position, @TandB, @comment )"
                     Using transaction As SqlTransaction = conn.BeginTransaction()
@@ -103,6 +113,67 @@ Public Class RegisterPlayerForm
             Return
         End If
     End Sub
+    Public Function strjadge() As Boolean
+        If NameTextBox.Text.Length = 0 Then
+            MsgBox("名前を入力してください")
+            Return True
+        End If
+        If RubTextBox.Text.Length = 0 Then
+            MsgBox("ふりがなを入力してください")
+            Return True
+        End If
+
+    End Function
+    Public Function Chk_Hiragana(ByVal PistrStr As String) As Boolean
+        Chk_Hiragana = Regex.IsMatch(PistrStr, "^\p{IsHiragana}*$")
+
+    End Function
+
+
+    Public Function intjadge() As Boolean
+        Dim nums As New List(Of String)
+        nums.Add(ARTextBox.Text)
+        nums.Add(HTextBox.Text)
+        nums.Add(LHTextBox.Text)
+        nums.Add(HRTextBox.Text)
+        nums.Add(HBPTextBox.Text)
+        nums.Add(SHTextBox.Text)
+        nums.Add(IBBandHBPTextBox.Text)
+        nums.Add(SOTextBox.Text)
+        nums.Add(SBTextBox.Text)
+
+        nums.Add(APPTextBox.Text)
+        nums.Add(IPTextBox.Text)
+        nums.Add(KTextBox.Text)
+        nums.Add(BTextBox.Text)
+        nums.Add(RTextBox.Text)
+        nums.Add(ERTextBox.Text)
+        nums.Add(WTextBox.Text)
+        nums.Add(SVTextBox.Text)
+
+        Dim intnums As New List(Of Integer)
+        For Each i In nums
+            Try
+                intnums.Add(CInt(i))
+            Catch ex As Exception
+                MsgBox("不正入力があります。")
+                Return True
+            End Try
+        Next
+        For Each i In intnums
+            If i < 0 OrElse 7000 < i Then
+                MsgBox("不正入力があります　　" & i)
+                Return True
+            End If
+        Next
+        For Each i In nums
+            If i.Length = 0 Then
+                MsgBox("空白があります")
+                Return True
+            End If
+        Next
+        Return False
+    End Function
     Public select_position As New List(Of String)
     Private Sub PositionComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PositionComboBox.SelectedIndexChanged
         Dim str As String
@@ -133,5 +204,81 @@ Public Class RegisterPlayerForm
         Next
         Dim Tstr As String = str.TrimEnd(CType(",", Char))
         PositionLabel.Text = Tstr
+    End Sub
+
+    Private Sub RegisterPlayerForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.AllowDrop = True
+        Me.PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        Me.Label_FileName.Text = "ファイルをドラッグ＆ドロップしてください"
+
+        PictureBox1.AllowDrop = True
+    End Sub
+
+
+    Private IsImage As Boolean
+
+
+
+    ' ---[関数]ドラッグされたものがフォルダーかファイルかを判別
+    Private Function fnc_FileSystemType(ByVal drags() As String) As String
+        If (System.IO.File.Exists(drags(0)) = True) Then
+            Return "File"
+        ElseIf (System.IO.Directory.Exists(drags(0)) = True) Then
+            Return "Folder"
+        Else
+            Return "None"
+        End If
+    End Function
+
+
+    ' ---[関数]画像とみなすか？
+    Private Function fnc_IsImage(ByVal fileName As String) As Boolean
+        ' ---[配列]画像とみなす拡張子
+        Dim AryExt() As String = {".jpg", ".jpeg", ".png", ".gif", ".bmp"}
+        ' ---
+        Dim ext As String = System.IO.Path.GetExtension(fileName)
+        For idx As Integer = 0 To AryExt.Length - 1
+            If (ext.ToLower = AryExt(idx)) Then
+                Return True
+            End If
+        Next
+        ' ---
+        Return False
+    End Function
+
+    Private Sub PictureBox1_DragDrop(sender As Object, e As DragEventArgs) Handles PictureBox1.DragDrop
+        If Me.IsImage Then
+            Me.PictureBox1.Image = Image.FromFile(Me.Label_FileName.Text)
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub PictureBox1_DragEnter(sender As Object, e As DragEventArgs) Handles PictureBox1.DragEnter
+        ' --- コントロール初期化
+        Me.PictureBox1.Image = Nothing
+        ' --- 変数初期化
+        Me.IsImage = False
+        ' --- ドラッグ中のファイルやディレクトリを文字型配列に格納
+        Dim Drags() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        ' --- フォルダーかファイルかを判別（FileSystemType)
+        Select Case Me.fnc_FileSystemType(Drags)
+            Case = "File"
+                ' ---▼ ファイルの場合
+                e.Effect = DragDropEffects.Copy  ' -- コピーを可能にする
+                Me.Label_FileName.Text = Drags(0) ' -- ファイル名（フルパス）
+
+                '--- ドラッグされているファイルを画像とみなすか？
+                If (Me.fnc_IsImage(Me.Label_FileName.Text)) Then
+                    Me.IsImage = True
+                    Exit Sub
+                End If
+            Case = "Folder"
+                ' ---▼ フォルダーの場合
+                e.Effect = DragDropEffects.None ' -- コピー不可
+                Me.Label_FileName.Text = "フォルダーはドラッグ＆ドロップできません"
+            Case Else
+                e.Effect = DragDropEffects.None ' -- コピー不可
+                Me.Label_FileName.Text = "ドラッグ対象が不明です"
+        End Select
     End Sub
 End Class

@@ -34,28 +34,6 @@ Partial Class PlayerCardForm
         Me.Button = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Vw_PitcherResultDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Vw_PitcherResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PlayerManagementDataSet = New Score_management.PlayerManagementDataSet()
-        Me.AdvancedBatterResultDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Vw_BatterResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.NameTextBox = New System.Windows.Forms.TextBox()
-        Me.Vw_PlayerlistBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.RubTextBox = New System.Windows.Forms.TextBox()
-        Me.Origin_schoolTextBox = New System.Windows.Forms.TextBox()
-        Me.PositionTextBox = New System.Windows.Forms.TextBox()
-        Me.TandBTextBox = New System.Windows.Forms.TextBox()
-        Me.CommentTextBox = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.PositionComboBox = New System.Windows.Forms.ComboBox()
-        Me.Player_idTextBox = New System.Windows.Forms.TextBox()
-        Me.Vw_BatterResultTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.vw_BatterResultTableAdapter()
-        Me.TableAdapterManager = New Score_management.PlayerManagementDataSetTableAdapters.TableAdapterManager()
-        Me.Vw_PitcherResultTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.vw_PitcherResultTableAdapter()
-        Me.Vw_PlayerlistTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.vw_PlayerlistTableAdapter()
-        Me.Player_ResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Player_ResultTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.Player_ResultTableAdapter()
-        Me.PlayerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PlayerTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.PlayerTableAdapter()
         Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ERA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.KBB = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -65,10 +43,11 @@ Partial Class PlayerCardForm
         Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.W = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SV = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Vw_PitcherResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PlayerManagementDataSet = New Score_management.PlayerManagementDataSet()
+        Me.AdvancedBatterResultDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -87,6 +66,27 @@ Partial Class PlayerCardForm
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Vw_BatterResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.NameTextBox = New System.Windows.Forms.TextBox()
+        Me.Vw_PlayerlistBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.RubTextBox = New System.Windows.Forms.TextBox()
+        Me.Origin_schoolTextBox = New System.Windows.Forms.TextBox()
+        Me.PositionTextBox = New System.Windows.Forms.TextBox()
+        Me.TandBTextBox = New System.Windows.Forms.TextBox()
+        Me.CommentTextBox = New System.Windows.Forms.TextBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.PositionComboBox = New System.Windows.Forms.ComboBox()
+        Me.Player_idTextBox = New System.Windows.Forms.TextBox()
+        Me.Label_FileName = New System.Windows.Forms.Label()
+        Me.Vw_BatterResultTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.vw_BatterResultTableAdapter()
+        Me.TableAdapterManager = New Score_management.PlayerManagementDataSetTableAdapters.TableAdapterManager()
+        Me.Vw_PitcherResultTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.vw_PitcherResultTableAdapter()
+        Me.Vw_PlayerlistTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.vw_PlayerlistTableAdapter()
+        Me.Player_ResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Player_ResultTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.Player_ResultTableAdapter()
+        Me.PlayerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PlayerTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.PlayerTableAdapter()
+        Me.UploadFileBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Player_idLabel = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_PitcherResultDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,13 +97,14 @@ Partial Class PlayerCardForm
         CType(Me.Vw_PlayerlistBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Player_ResultBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PlayerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UploadFileBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Player_idLabel
         '
         Player_idLabel.AutoSize = True
         Player_idLabel.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Player_idLabel.Location = New System.Drawing.Point(12, 301)
+        Player_idLabel.Location = New System.Drawing.Point(14, 260)
         Player_idLabel.Name = "Player_idLabel"
         Player_idLabel.Size = New System.Drawing.Size(26, 19)
         Player_idLabel.TabIndex = 36
@@ -111,9 +112,9 @@ Partial Class PlayerCardForm
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 42)
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 45)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(155, 239)
+        Me.PictureBox1.Size = New System.Drawing.Size(124, 191)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -121,7 +122,7 @@ Partial Class PlayerCardForm
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(190, 44)
+        Me.Label1.Location = New System.Drawing.Point(157, 45)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 22)
         Me.Label1.TabIndex = 1
@@ -131,7 +132,7 @@ Partial Class PlayerCardForm
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(190, 72)
+        Me.Label2.Location = New System.Drawing.Point(157, 71)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(64, 22)
         Me.Label2.TabIndex = 2
@@ -141,7 +142,7 @@ Partial Class PlayerCardForm
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.Location = New System.Drawing.Point(190, 100)
+        Me.Label3.Location = New System.Drawing.Point(157, 95)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 22)
         Me.Label3.TabIndex = 3
@@ -151,7 +152,7 @@ Partial Class PlayerCardForm
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label4.Location = New System.Drawing.Point(190, 129)
+        Me.Label4.Location = New System.Drawing.Point(157, 121)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(74, 22)
         Me.Label4.TabIndex = 4
@@ -161,7 +162,7 @@ Partial Class PlayerCardForm
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label5.Location = New System.Drawing.Point(190, 228)
+        Me.Label5.Location = New System.Drawing.Point(157, 189)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(44, 22)
         Me.Label5.TabIndex = 5
@@ -172,7 +173,7 @@ Partial Class PlayerCardForm
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label7.Location = New System.Drawing.Point(543, 44)
+        Me.Label7.Location = New System.Drawing.Point(507, 49)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(59, 22)
         Me.Label7.TabIndex = 7
@@ -181,9 +182,9 @@ Partial Class PlayerCardForm
         'Button
         '
         Me.Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button.Location = New System.Drawing.Point(615, 240)
+        Me.Button.Location = New System.Drawing.Point(583, 202)
         Me.Button.Name = "Button"
-        Me.Button.Size = New System.Drawing.Size(104, 34)
+        Me.Button.Size = New System.Drawing.Size(100, 49)
         Me.Button.TabIndex = 9
         Me.Button.Text = "編集"
         Me.Button.UseVisualStyleBackColor = True
@@ -191,9 +192,9 @@ Partial Class PlayerCardForm
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(786, 240)
+        Me.Button1.Location = New System.Drawing.Point(702, 202)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(104, 34)
+        Me.Button1.Size = New System.Drawing.Size(100, 49)
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "削除"
         Me.Button1.UseVisualStyleBackColor = True
@@ -208,178 +209,15 @@ Partial Class PlayerCardForm
         Me.Vw_PitcherResultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.Vw_PitcherResultDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.Vw_PitcherResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Vw_PitcherResultDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn32, Me.ERA, Me.KBB, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn22, Me.W, Me.SV})
+        Me.Vw_PitcherResultDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn32, Me.ERA, Me.KBB, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30, Me.DataGridViewTextBoxColumn31, Me.W, Me.SV})
         Me.Vw_PitcherResultDataGridView.DataSource = Me.Vw_PitcherResultBindingSource
-        Me.Vw_PitcherResultDataGridView.Location = New System.Drawing.Point(12, 331)
+        Me.Vw_PitcherResultDataGridView.Location = New System.Drawing.Point(12, 314)
         Me.Vw_PitcherResultDataGridView.Name = "Vw_PitcherResultDataGridView"
         Me.Vw_PitcherResultDataGridView.RowHeadersVisible = False
         Me.Vw_PitcherResultDataGridView.RowHeadersWidth = 51
         Me.Vw_PitcherResultDataGridView.RowTemplate.Height = 24
-        Me.Vw_PitcherResultDataGridView.Size = New System.Drawing.Size(878, 74)
+        Me.Vw_PitcherResultDataGridView.Size = New System.Drawing.Size(846, 74)
         Me.Vw_PitcherResultDataGridView.TabIndex = 7
-        '
-        'Vw_PitcherResultBindingSource
-        '
-        Me.Vw_PitcherResultBindingSource.DataMember = "vw_PitcherResult"
-        Me.Vw_PitcherResultBindingSource.DataSource = Me.PlayerManagementDataSet
-        '
-        'PlayerManagementDataSet
-        '
-        Me.PlayerManagementDataSet.DataSetName = "PlayerManagementDataSet"
-        Me.PlayerManagementDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'AdvancedBatterResultDataGridView
-        '
-        Me.AdvancedBatterResultDataGridView.AllowUserToAddRows = False
-        Me.AdvancedBatterResultDataGridView.AllowUserToDeleteRows = False
-        Me.AdvancedBatterResultDataGridView.AllowUserToOrderColumns = True
-        Me.AdvancedBatterResultDataGridView.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.AdvancedBatterResultDataGridView.AutoGenerateColumns = False
-        Me.AdvancedBatterResultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.AdvancedBatterResultDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.AdvancedBatterResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.AdvancedBatterResultDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn5, Me.average, Me.OBP, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn14})
-        Me.AdvancedBatterResultDataGridView.DataSource = Me.Vw_BatterResultBindingSource
-        Me.AdvancedBatterResultDataGridView.Location = New System.Drawing.Point(12, 411)
-        Me.AdvancedBatterResultDataGridView.Name = "AdvancedBatterResultDataGridView"
-        Me.AdvancedBatterResultDataGridView.RowHeadersVisible = False
-        Me.AdvancedBatterResultDataGridView.RowHeadersWidth = 51
-        Me.AdvancedBatterResultDataGridView.RowTemplate.Height = 24
-        Me.AdvancedBatterResultDataGridView.Size = New System.Drawing.Size(878, 69)
-        Me.AdvancedBatterResultDataGridView.TabIndex = 8
-        '
-        'Vw_BatterResultBindingSource
-        '
-        Me.Vw_BatterResultBindingSource.DataMember = "vw_BatterResult"
-        Me.Vw_BatterResultBindingSource.DataSource = Me.PlayerManagementDataSet
-        '
-        'NameTextBox
-        '
-        Me.NameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "name", True))
-        Me.NameTextBox.Location = New System.Drawing.Point(278, 46)
-        Me.NameTextBox.Name = "NameTextBox"
-        Me.NameTextBox.Size = New System.Drawing.Size(213, 22)
-        Me.NameTextBox.TabIndex = 1
-        '
-        'Vw_PlayerlistBindingSource
-        '
-        Me.Vw_PlayerlistBindingSource.DataMember = "vw_Playerlist"
-        Me.Vw_PlayerlistBindingSource.DataSource = Me.PlayerManagementDataSet
-        '
-        'RubTextBox
-        '
-        Me.RubTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "rub", True))
-        Me.RubTextBox.Location = New System.Drawing.Point(278, 74)
-        Me.RubTextBox.Name = "RubTextBox"
-        Me.RubTextBox.Size = New System.Drawing.Size(213, 22)
-        Me.RubTextBox.TabIndex = 2
-        '
-        'Origin_schoolTextBox
-        '
-        Me.Origin_schoolTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "origin_school", True))
-        Me.Origin_schoolTextBox.Location = New System.Drawing.Point(278, 102)
-        Me.Origin_schoolTextBox.Name = "Origin_schoolTextBox"
-        Me.Origin_schoolTextBox.Size = New System.Drawing.Size(213, 22)
-        Me.Origin_schoolTextBox.TabIndex = 3
-        '
-        'PositionTextBox
-        '
-        Me.PositionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "position", True))
-        Me.PositionTextBox.Location = New System.Drawing.Point(278, 160)
-        Me.PositionTextBox.Multiline = True
-        Me.PositionTextBox.Name = "PositionTextBox"
-        Me.PositionTextBox.ReadOnly = True
-        Me.PositionTextBox.Size = New System.Drawing.Size(213, 64)
-        Me.PositionTextBox.TabIndex = 500
-        Me.PositionTextBox.TabStop = False
-        '
-        'TandBTextBox
-        '
-        Me.TandBTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "TandB", True))
-        Me.TandBTextBox.Location = New System.Drawing.Point(278, 259)
-        Me.TandBTextBox.Name = "TandBTextBox"
-        Me.TandBTextBox.ReadOnly = True
-        Me.TandBTextBox.Size = New System.Drawing.Size(213, 22)
-        Me.TandBTextBox.TabIndex = 501
-        Me.TandBTextBox.TabStop = False
-        '
-        'CommentTextBox
-        '
-        Me.CommentTextBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CommentTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "comment", True))
-        Me.CommentTextBox.Location = New System.Drawing.Point(615, 42)
-        Me.CommentTextBox.Multiline = True
-        Me.CommentTextBox.Name = "CommentTextBox"
-        Me.CommentTextBox.Size = New System.Drawing.Size(275, 149)
-        Me.CommentTextBox.TabIndex = 6
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"右投右打", "右投左打", "右投両打", "左投右打", "左投左打", "左投両打", "両投右打", "両投左打", "両投両打"})
-        Me.ComboBox1.Location = New System.Drawing.Point(278, 230)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(213, 23)
-        Me.ComboBox1.TabIndex = 5
-        '
-        'PositionComboBox
-        '
-        Me.PositionComboBox.FormattingEnabled = True
-        Me.PositionComboBox.Items.AddRange(New Object() {"投手", "キャッチャー", "ファースト", "セカンド", "ショート", "サード", "外野手"})
-        Me.PositionComboBox.Location = New System.Drawing.Point(278, 131)
-        Me.PositionComboBox.Name = "PositionComboBox"
-        Me.PositionComboBox.Size = New System.Drawing.Size(213, 23)
-        Me.PositionComboBox.TabIndex = 4
-        '
-        'Player_idTextBox
-        '
-        Me.Player_idTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "Player_id", True))
-        Me.Player_idTextBox.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Player_idTextBox.Location = New System.Drawing.Point(39, 298)
-        Me.Player_idTextBox.Name = "Player_idTextBox"
-        Me.Player_idTextBox.ReadOnly = True
-        Me.Player_idTextBox.Size = New System.Drawing.Size(100, 27)
-        Me.Player_idTextBox.TabIndex = 37
-        '
-        'Vw_BatterResultTableAdapter
-        '
-        Me.Vw_BatterResultTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.BatterTableAdapter = Nothing
-        Me.TableAdapterManager.Connection = Nothing
-        Me.TableAdapterManager.PitcherTableAdapter = Nothing
-        Me.TableAdapterManager.Player_ResultTableAdapter = Nothing
-        Me.TableAdapterManager.PlayerTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = Score_management.PlayerManagementDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'Vw_PitcherResultTableAdapter
-        '
-        Me.Vw_PitcherResultTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_PlayerlistTableAdapter
-        '
-        Me.Vw_PlayerlistTableAdapter.ClearBeforeFill = True
-        '
-        'Player_ResultBindingSource
-        '
-        Me.Player_ResultBindingSource.DataMember = "Player_Result"
-        Me.Player_ResultBindingSource.DataSource = Me.PlayerManagementDataSet
-        '
-        'Player_ResultTableAdapter
-        '
-        Me.Player_ResultTableAdapter.ClearBeforeFill = True
-        '
-        'PlayerBindingSource
-        '
-        Me.PlayerBindingSource.DataMember = "Player"
-        Me.PlayerBindingSource.DataSource = Me.PlayerManagementDataSet
-        '
-        'PlayerTableAdapter
-        '
-        Me.PlayerTableAdapter.ClearBeforeFill = True
         '
         'DataGridViewTextBoxColumn32
         '
@@ -455,24 +293,6 @@ Partial Class PlayerCardForm
         Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
         Me.DataGridViewTextBoxColumn31.Width = 66
         '
-        'DataGridViewTextBoxColumn33
-        '
-        Me.DataGridViewTextBoxColumn33.DataPropertyName = "Pitcher_id"
-        Me.DataGridViewTextBoxColumn33.HeaderText = "Pitcher_id"
-        Me.DataGridViewTextBoxColumn33.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
-        Me.DataGridViewTextBoxColumn33.Visible = False
-        Me.DataGridViewTextBoxColumn33.Width = 97
-        '
-        'DataGridViewTextBoxColumn22
-        '
-        Me.DataGridViewTextBoxColumn22.DataPropertyName = "ID"
-        Me.DataGridViewTextBoxColumn22.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn22.MinimumWidth = 6
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        Me.DataGridViewTextBoxColumn22.Visible = False
-        Me.DataGridViewTextBoxColumn22.Width = 50
-        '
         'W
         '
         Me.W.DataPropertyName = "W"
@@ -488,6 +308,36 @@ Partial Class PlayerCardForm
         Me.SV.MinimumWidth = 6
         Me.SV.Name = "SV"
         Me.SV.Width = 71
+        '
+        'Vw_PitcherResultBindingSource
+        '
+        Me.Vw_PitcherResultBindingSource.DataMember = "vw_PitcherResult"
+        Me.Vw_PitcherResultBindingSource.DataSource = Me.PlayerManagementDataSet
+        '
+        'PlayerManagementDataSet
+        '
+        Me.PlayerManagementDataSet.DataSetName = "PlayerManagementDataSet"
+        Me.PlayerManagementDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'AdvancedBatterResultDataGridView
+        '
+        Me.AdvancedBatterResultDataGridView.AllowUserToAddRows = False
+        Me.AdvancedBatterResultDataGridView.AllowUserToDeleteRows = False
+        Me.AdvancedBatterResultDataGridView.AllowUserToOrderColumns = True
+        Me.AdvancedBatterResultDataGridView.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.AdvancedBatterResultDataGridView.AutoGenerateColumns = False
+        Me.AdvancedBatterResultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.AdvancedBatterResultDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.AdvancedBatterResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.AdvancedBatterResultDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn5, Me.average, Me.OBP, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn14})
+        Me.AdvancedBatterResultDataGridView.DataSource = Me.Vw_BatterResultBindingSource
+        Me.AdvancedBatterResultDataGridView.Location = New System.Drawing.Point(11, 404)
+        Me.AdvancedBatterResultDataGridView.Name = "AdvancedBatterResultDataGridView"
+        Me.AdvancedBatterResultDataGridView.RowHeadersVisible = False
+        Me.AdvancedBatterResultDataGridView.RowHeadersWidth = 51
+        Me.AdvancedBatterResultDataGridView.RowTemplate.Height = 24
+        Me.AdvancedBatterResultDataGridView.Size = New System.Drawing.Size(846, 77)
+        Me.AdvancedBatterResultDataGridView.TabIndex = 8
         '
         'DataGridViewTextBoxColumn1
         '
@@ -657,12 +507,162 @@ Partial Class PlayerCardForm
         Me.DataGridViewTextBoxColumn14.Visible = False
         Me.DataGridViewTextBoxColumn14.Width = 50
         '
+        'Vw_BatterResultBindingSource
+        '
+        Me.Vw_BatterResultBindingSource.DataMember = "vw_BatterResult"
+        Me.Vw_BatterResultBindingSource.DataSource = Me.PlayerManagementDataSet
+        '
+        'NameTextBox
+        '
+        Me.NameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "name", True))
+        Me.NameTextBox.Location = New System.Drawing.Point(268, 47)
+        Me.NameTextBox.Name = "NameTextBox"
+        Me.NameTextBox.Size = New System.Drawing.Size(170, 22)
+        Me.NameTextBox.TabIndex = 1
+        '
+        'Vw_PlayerlistBindingSource
+        '
+        Me.Vw_PlayerlistBindingSource.DataMember = "vw_Playerlist"
+        Me.Vw_PlayerlistBindingSource.DataSource = Me.PlayerManagementDataSet
+        '
+        'RubTextBox
+        '
+        Me.RubTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "rub", True))
+        Me.RubTextBox.Location = New System.Drawing.Point(268, 80)
+        Me.RubTextBox.Name = "RubTextBox"
+        Me.RubTextBox.Size = New System.Drawing.Size(170, 22)
+        Me.RubTextBox.TabIndex = 2
+        '
+        'Origin_schoolTextBox
+        '
+        Me.Origin_schoolTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "origin_school", True))
+        Me.Origin_schoolTextBox.Location = New System.Drawing.Point(268, 110)
+        Me.Origin_schoolTextBox.Name = "Origin_schoolTextBox"
+        Me.Origin_schoolTextBox.Size = New System.Drawing.Size(170, 22)
+        Me.Origin_schoolTextBox.TabIndex = 3
+        '
+        'PositionTextBox
+        '
+        Me.PositionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "position", True))
+        Me.PositionTextBox.Location = New System.Drawing.Point(268, 171)
+        Me.PositionTextBox.Multiline = True
+        Me.PositionTextBox.Name = "PositionTextBox"
+        Me.PositionTextBox.ReadOnly = True
+        Me.PositionTextBox.Size = New System.Drawing.Size(170, 51)
+        Me.PositionTextBox.TabIndex = 500
+        Me.PositionTextBox.TabStop = False
+        '
+        'TandBTextBox
+        '
+        Me.TandBTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "TandB", True))
+        Me.TandBTextBox.Location = New System.Drawing.Point(268, 257)
+        Me.TandBTextBox.Name = "TandBTextBox"
+        Me.TandBTextBox.ReadOnly = True
+        Me.TandBTextBox.Size = New System.Drawing.Size(170, 22)
+        Me.TandBTextBox.TabIndex = 501
+        Me.TandBTextBox.TabStop = False
+        '
+        'CommentTextBox
+        '
+        Me.CommentTextBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CommentTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "comment", True))
+        Me.CommentTextBox.Location = New System.Drawing.Point(583, 49)
+        Me.CommentTextBox.Multiline = True
+        Me.CommentTextBox.Name = "CommentTextBox"
+        Me.CommentTextBox.Size = New System.Drawing.Size(219, 106)
+        Me.CommentTextBox.TabIndex = 6
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"右投右打", "右投左打", "右投両打", "左投右打", "左投左打", "左投両打", "両投右打", "両投左打", "両投両打"})
+        Me.ComboBox1.Location = New System.Drawing.Point(268, 228)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(170, 23)
+        Me.ComboBox1.TabIndex = 5
+        '
+        'PositionComboBox
+        '
+        Me.PositionComboBox.FormattingEnabled = True
+        Me.PositionComboBox.Items.AddRange(New Object() {"投手", "キャッチャー", "ファースト", "セカンド", "ショート", "サード", "外野手"})
+        Me.PositionComboBox.Location = New System.Drawing.Point(268, 142)
+        Me.PositionComboBox.Name = "PositionComboBox"
+        Me.PositionComboBox.Size = New System.Drawing.Size(170, 23)
+        Me.PositionComboBox.TabIndex = 4
+        '
+        'Player_idTextBox
+        '
+        Me.Player_idTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_PlayerlistBindingSource, "Player_id", True))
+        Me.Player_idTextBox.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Player_idTextBox.Location = New System.Drawing.Point(46, 257)
+        Me.Player_idTextBox.Name = "Player_idTextBox"
+        Me.Player_idTextBox.ReadOnly = True
+        Me.Player_idTextBox.Size = New System.Drawing.Size(80, 27)
+        Me.Player_idTextBox.TabIndex = 37
+        '
+        'Label_FileName
+        '
+        Me.Label_FileName.AutoSize = True
+        Me.Label_FileName.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label_FileName.Location = New System.Drawing.Point(5, 7)
+        Me.Label_FileName.Name = "Label_FileName"
+        Me.Label_FileName.Size = New System.Drawing.Size(24, 19)
+        Me.Label_FileName.TabIndex = 502
+        Me.Label_FileName.Text = "："
+        '
+        'Vw_BatterResultTableAdapter
+        '
+        Me.Vw_BatterResultTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.BatterTableAdapter = Nothing
+        Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.PitcherTableAdapter = Nothing
+        Me.TableAdapterManager.Player_ResultTableAdapter = Nothing
+        Me.TableAdapterManager.PlayerTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = Score_management.PlayerManagementDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.UploadFileTableAdapter = Nothing
+        '
+        'Vw_PitcherResultTableAdapter
+        '
+        Me.Vw_PitcherResultTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_PlayerlistTableAdapter
+        '
+        Me.Vw_PlayerlistTableAdapter.ClearBeforeFill = True
+        '
+        'Player_ResultBindingSource
+        '
+        Me.Player_ResultBindingSource.DataMember = "Player_Result"
+        Me.Player_ResultBindingSource.DataSource = Me.PlayerManagementDataSet
+        '
+        'Player_ResultTableAdapter
+        '
+        Me.Player_ResultTableAdapter.ClearBeforeFill = True
+        '
+        'PlayerBindingSource
+        '
+        Me.PlayerBindingSource.DataMember = "Player"
+        Me.PlayerBindingSource.DataSource = Me.PlayerManagementDataSet
+        '
+        'PlayerTableAdapter
+        '
+        Me.PlayerTableAdapter.ClearBeforeFill = True
+        '
+        'UploadFileBindingSource
+        '
+        Me.UploadFileBindingSource.DataSource = Me.PlayerManagementDataSet
+        Me.UploadFileBindingSource.Position = 0
+        '
         'PlayerCardForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(902, 510)
+        Me.ClientSize = New System.Drawing.Size(870, 487)
+        Me.Controls.Add(Me.Label_FileName)
         Me.Controls.Add(Player_idLabel)
         Me.Controls.Add(Me.Player_idTextBox)
         Me.Controls.Add(Me.PositionComboBox)
@@ -696,6 +696,7 @@ Partial Class PlayerCardForm
         CType(Me.Vw_PlayerlistBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Player_ResultBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PlayerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UploadFileBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -735,19 +736,6 @@ Partial Class PlayerCardForm
     Friend WithEvents Player_idTextBox As TextBox
     Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn35 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
-    Friend WithEvents ERA As DataGridViewTextBoxColumn
-    Friend WithEvents KBB As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn33 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
-    Friend WithEvents W As DataGridViewTextBoxColumn
-    Friend WithEvents SV As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -766,4 +754,17 @@ Partial Class PlayerCardForm
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
+    Friend WithEvents Label_FileName As Label
+    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
+    Friend WithEvents ERA As DataGridViewTextBoxColumn
+    Friend WithEvents KBB As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
+    Friend WithEvents W As DataGridViewTextBoxColumn
+    Friend WithEvents SV As DataGridViewTextBoxColumn
+    Friend WithEvents UploadFileBindingSource As BindingSource
 End Class

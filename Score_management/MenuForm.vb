@@ -28,8 +28,10 @@
     Private Sub MenuForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Not LogonForm.Auth = True Then
             SettingButton.Visible = False
+            RegisterButton.Visible = False
         Else
             SettingButton.Visible = True
+            RegisterButton.Visible = True
         End If
     End Sub
 End Class

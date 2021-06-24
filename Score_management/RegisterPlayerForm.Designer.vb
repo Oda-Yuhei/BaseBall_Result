@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class RegisterPlayerForm
     Inherits System.Windows.Forms.Form
 
     'フォームがコンポーネントの一覧をクリーンアップするために dispose をオーバーライドします。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class RegisterPlayerForm
     'メモ: 以下のプロシージャは Windows フォーム デザイナーで必要です。
     'Windows フォーム デザイナーを使用して変更できます。  
     'コード エディターを使って変更しないでください。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -75,12 +75,13 @@ Partial Class RegisterPlayerForm
         Me.SVTextBox = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.WTextBox = New System.Windows.Forms.TextBox()
+        Me.Label_FileName = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 10)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(165, 237)
         Me.PictureBox1.TabIndex = 0
@@ -558,11 +559,22 @@ Partial Class RegisterPlayerForm
         Me.WTextBox.TabIndex = 22
         Me.WTextBox.Text = "0"
         '
+        'Label_FileName
+        '
+        Me.Label_FileName.AutoSize = True
+        Me.Label_FileName.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label_FileName.Location = New System.Drawing.Point(13, 258)
+        Me.Label_FileName.Name = "Label_FileName"
+        Me.Label_FileName.Size = New System.Drawing.Size(15, 19)
+        Me.Label_FileName.TabIndex = 101
+        Me.Label_FileName.Text = ":"
+        '
         'RegisterPlayerForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1037, 377)
+        Me.Controls.Add(Me.Label_FileName)
         Me.Controls.Add(Me.PositionLabel)
         Me.Controls.Add(Me.Label27)
         Me.Controls.Add(Me.SVTextBox)
@@ -677,4 +689,5 @@ Partial Class RegisterPlayerForm
     Friend WithEvents SVTextBox As TextBox
     Friend WithEvents Label26 As Label
     Friend WithEvents WTextBox As TextBox
+    Friend WithEvents Label_FileName As Label
 End Class
