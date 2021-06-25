@@ -183,22 +183,10 @@
     <Compile Include="RankingForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterMenuForm.Designer.vb">
-      <DependentUpon>RegisterMenuForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RegisterMenuForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="RegisterPlayerForm.Designer.vb">
       <DependentUpon>RegisterPlayerForm.vb</DependentUpon>
     </Compile>
     <Compile Include="RegisterPlayerForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegisterResultForm.Designer.vb">
-      <DependentUpon>RegisterResultForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RegisterResultForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SettingForm.Designer.vb">
@@ -236,14 +224,8 @@
     <EmbeddedResource Include="RankingForm.resx">
       <DependentUpon>RankingForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegisterMenuForm.resx">
-      <DependentUpon>RegisterMenuForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RegisterPlayerForm.resx">
       <DependentUpon>RegisterPlayerForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegisterResultForm.resx">
-      <DependentUpon>RegisterResultForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.vb</DependentUpon>

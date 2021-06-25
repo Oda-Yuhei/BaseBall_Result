@@ -6,28 +6,36 @@ Public Class ChartForm
     Public farstcode As String
     Public positioncode As String
     Private Sub ChartForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: このコード行はデータを 'PlayerManagementDataSet1.vw_PitcherResult' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.Vw_PitcherResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_PitcherResult)
-        'TODO: このコード行はデータを 'PlayerManagementDataSet.vw_BatterResult' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.Vw_BatterResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_BatterResult)
-        'TODO: このコード行はデータを 'PlayerManagementDataSet.vw_Playerlist' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.Vw_PlayerlistTableAdapter.Fill(Me.PlayerManagementDataSet.vw_Playerlist)
+        Try
+            Me.Vw_PitcherResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_PitcherResult)
+            Me.Vw_BatterResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_BatterResult)
+            Me.Vw_PlayerlistTableAdapter.Fill(Me.PlayerManagementDataSet.vw_Playerlist)
+
+        Catch ex As Exception
+            MsgBox("No Data")
+        End Try
 
     End Sub
     Public line As New List(Of String)
     Private Sub EnterButton_Click(sender As Object, e As EventArgs) Handles EnterButton.Click
-        Dim str As String
-        str = name_ComboBox.SelectedItem
-        Dim fillter_position As String = PositionComboBox.SelectedItem
-        'defaultDataGridViewをsearch
-        If Not name_ComboBox.Text = "(五十音)" And PositionComboBox.Text = "(ポジション)" Then
-            Initial_sarch(str)
-        ElseIf name_ComboBox.Text = "(五十音)" And Not PositionComboBox.Text = "(ポジション)" Then
-            Position_sarch(fillter_position, 1)
-        Else
-            Initial_Position_sarch(str, fillter_position)
-        End If
+        Try
+            Dim str As String
+            str = name_ComboBox.SelectedItem
+            Dim fillter_position As String = PositionComboBox.SelectedItem
+            'defaultDataGridViewをsearch
+            If Not name_ComboBox.Text = "(五十音)" And PositionComboBox.Text = "(ポジション)" Then
+                Initial_sarch(str)
+            ElseIf name_ComboBox.Text = "(五十音)" And Not PositionComboBox.Text = "(ポジション)" Then
+                Position_sarch(fillter_position, 1)
+            Else
+                Initial_Position_sarch(str, fillter_position)
+            End If
 
+
+        Catch ex As Exception
+            MsgBox("No Data")
+
+        End Try
 
     End Sub
 

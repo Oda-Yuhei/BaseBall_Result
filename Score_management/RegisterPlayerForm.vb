@@ -153,6 +153,7 @@ Public Class RegisterPlayerForm
 
         Dim intnums As New List(Of Integer)
         For Each i In nums
+
             Try
                 intnums.Add(CInt(i))
             Catch ex As Exception

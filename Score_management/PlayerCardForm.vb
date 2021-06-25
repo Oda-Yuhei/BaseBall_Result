@@ -6,8 +6,6 @@ Public Class PlayerCardForm
     Public ID As String
     Private Sub PlayerCardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
-
         Me.AllowDrop = True
         Me.PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         Me.Label_FileName.Text = "ファイルをドラッグ＆ドロップしてください"
@@ -17,17 +15,16 @@ Public Class PlayerCardForm
         Me.Vw_PlayerlistTableAdapter.Fill(Me.PlayerManagementDataSet.vw_Playerlist)
         Me.Vw_BatterResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_BatterResult)
 
-        PictureBox1.AllowDrop = True
-
         If Not LogonForm.Auth = True Then
             Button.Visible = False
             Button1.Visible = False
         Else
             Button.Visible = True
             Button1.Visible = True
-
+            PictureBox1.AllowDrop = True
+            Me.Vw_PitcherResultDataGridView.EditMode = DataGridViewEditMode.EditOnEnter
+            Me.AdvancedBatterResultDataGridView.EditMode = DataGridViewEditMode.EditOnEnter
         End If
-
         '画像インポート
 
         Dim cn As New SqlClient.SqlConnection
@@ -152,7 +149,18 @@ Public Class PlayerCardForm
         End If
         Dim result As DialogResult = MessageBox.Show("データを上書きしてもよろしいですか？", "データ編集", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2)
         If result = DialogResult.OK Then
-            Dim sql As String = "UPDATE Player SET name = @name, rub = @rub, origin_school = @origin_school, position = @position, TandB = @TandB, comment = @comment WHERE Player_id = @player_id"
+            Dim sql As String = "UPDATE Player SET name = @name, rub = @rub, origin_school = @origin_school, position = @position, TandB = @TandB, comment = @comment WHERE Player_id = @player_id;"
+
+            Dim Pit As Boolean = False
+            Dim Bat As Boolean = False
+            If Vw_PitcherResultDataGridView.Rows.Count <> 0 Then
+                sql += "UPDATE Pitcher SET APP = @app, IP = @ip, R = @r, ER = @er, K = @k, B = @b, W =@w, SV = @sv WHERE Pitcher_id = @Pitcher_id;"
+                Pit = True
+            End If
+            If AdvancedBatterResultDataGridView.Rows.Count <> 0 Then
+                sql += "UPDATE Batter SET AR = @ar, H = @h, LH = @lh, HR = @hr, HBP = @hbp, SH = @sh, IBBandHBP = @ibbandhbp, SO = @so, SB = @sb WHERE Batter_id = @Batter_id;"
+                Bat = True
+            End If
             Try
                 Using conn As New SqlConnection
                     conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
@@ -160,6 +168,7 @@ Public Class PlayerCardForm
                     Using transaction As SqlTransaction = conn.BeginTransaction()
                         Try
                             Using cmd As New SqlCommand(sql, conn, transaction)
+                                'Player
                                 cmd.Parameters.AddWithValue("@name", Me.NameTextBox.Text)
                                 cmd.Parameters.AddWithValue("@rub", Me.RubTextBox.Text)
                                 cmd.Parameters.AddWithValue("@origin_school", Me.Origin_schoolTextBox.Text)
@@ -167,6 +176,34 @@ Public Class PlayerCardForm
                                 cmd.Parameters.AddWithValue("@TandB", Me.TandBTextBox.Text)
                                 cmd.Parameters.AddWithValue("@comment", Me.CommentTextBox.Text)
                                 cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
+
+                                'Pitche
+                                If Pit Then
+                                    cmd.Parameters.AddWithValue("@app", Vw_PitcherResultDataGridView.Rows(0).Cells(3).Value)
+                                    cmd.Parameters.AddWithValue("@ip", Vw_PitcherResultDataGridView.Rows(0).Cells(4).Value)
+                                    cmd.Parameters.AddWithValue("@r", Vw_PitcherResultDataGridView.Rows(0).Cells(5).Value)
+                                    cmd.Parameters.AddWithValue("@er", Vw_PitcherResultDataGridView.Rows(0).Cells(6).Value)
+                                    cmd.Parameters.AddWithValue("@k", Vw_PitcherResultDataGridView.Rows(0).Cells(7).Value)
+                                    cmd.Parameters.AddWithValue("@b", Vw_PitcherResultDataGridView.Rows(0).Cells(8).Value)
+                                    cmd.Parameters.AddWithValue("@w", Vw_PitcherResultDataGridView.Rows(0).Cells(9).Value)
+                                    cmd.Parameters.AddWithValue("@sv", Vw_PitcherResultDataGridView.Rows(0).Cells(10).Value)
+                                    cmd.Parameters.AddWithValue("@Pitcher_id", Me.Player_idTextBox.Text)
+                                End If
+                                'Batter
+                                If Bat Then
+                                    cmd.Parameters.AddWithValue("@ar", AdvancedBatterResultDataGridView.Rows(0).Cells(1).Value)
+                                    cmd.Parameters.AddWithValue("@h", AdvancedBatterResultDataGridView.Rows(0).Cells(4).Value)
+                                    cmd.Parameters.AddWithValue("@lh", AdvancedBatterResultDataGridView.Rows(0).Cells(5).Value)
+                                    cmd.Parameters.AddWithValue("@hr", AdvancedBatterResultDataGridView.Rows(0).Cells(6).Value)
+                                    cmd.Parameters.AddWithValue("@hbp", AdvancedBatterResultDataGridView.Rows(0).Cells(7).Value)
+                                    cmd.Parameters.AddWithValue("@sh", AdvancedBatterResultDataGridView.Rows(0).Cells(8).Value)
+                                    cmd.Parameters.AddWithValue("@ibbandhbp", AdvancedBatterResultDataGridView.Rows(0).Cells(10).Value)
+                                    cmd.Parameters.AddWithValue("@so", AdvancedBatterResultDataGridView.Rows(0).Cells(9).Value)
+                                    cmd.Parameters.AddWithValue("@sb", AdvancedBatterResultDataGridView.Rows(0).Cells(11).Value)
+                                    cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
+                                End If
+
+
                                 cmd.ExecuteNonQuery()
 
                                 transaction.Commit()
@@ -174,6 +211,7 @@ Public Class PlayerCardForm
                             End Using
                         Catch ex As Exception
                             transaction.Rollback()
+                            MsgBox(ex.Message)
                             MsgBox(ex.StackTrace)
 
                         End Try
@@ -181,40 +219,40 @@ Public Class PlayerCardForm
                 End Using
             Catch ex As Exception
                 MsgBox(ex.Message)
-            End Try
-            sql = "UPDATE UploadFile SET FileData = @FileData, UploadFileName = @UploadFileName WHERE Player_id = @Player_id"
-            'sql = "INSERT INTO UploadFile(FileID,FileData,UploadFileName,Player_id) VALUES( NEWID(), @FileData,@UploadFileName,@Player_id)"
-            Dim Filename As String = Me.Player_idTextBox.Text & Me.NameTextBox.Text & ".jpg"
-            Dim datastr As Byte() = ImageToByteArray(PictureBox1.Image)
-            Try
-                Using conn As New SqlConnection
-                    conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-                    conn.Open()
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@FileData", datastr)
-                                cmd.Parameters.AddWithValue("@UploadFileName", Filename)
-                                cmd.Parameters.AddWithValue("@Player_id", Player_idTextBox.Text)
-                                cmd.ExecuteNonQuery()
+                End Try
+                sql = "UPDATE UploadFile SET FileData = @FileData, UploadFileName = @UploadFileName WHERE Player_id = @Player_id"
+                'sql = "INSERT INTO UploadFile(FileID,FileData,UploadFileName,Player_id) VALUES( NEWID(), @FileData,@UploadFileName,@Player_id)"
+                Dim Filename As String = Me.Player_idTextBox.Text & Me.NameTextBox.Text & ".jpg"
+                Dim datastr As Byte() = ImageToByteArray(PictureBox1.Image)
+                Try
+                    Using conn As New SqlConnection
+                        conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
+                        conn.Open()
+                        Using transaction As SqlTransaction = conn.BeginTransaction()
+                            Try
+                                Using cmd As New SqlCommand(sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@FileData", datastr)
+                                    cmd.Parameters.AddWithValue("@UploadFileName", Filename)
+                                    cmd.Parameters.AddWithValue("@Player_id", Player_idTextBox.Text)
+                                    cmd.ExecuteNonQuery()
 
-                                transaction.Commit()
-                                ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
+                                    transaction.Commit()
+                                    ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
 
-                        End Try
+                            End Try
+                        End Using
                     End Using
-                End Using
 
-                Me.Close()
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-        ElseIf result = DialogResult.Cancel Then
-            Return
+                    Me.Close()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+            ElseIf result = DialogResult.Cancel Then
+                Return
         End If
     End Sub
     Public Shared Function ByteArrayToImage(ByVal b As Byte()) As Image
@@ -258,9 +296,6 @@ Public Class PlayerCardForm
         Dim Tstr As String = str.TrimEnd(CType(",", Char))
         PositionTextBox.Text = Tstr
     End Sub
-
-
-
 
 
     ' ---[関数]ドラッグされたものがフォルダーかファイルかを判別
@@ -342,8 +377,8 @@ Public Class PlayerCardForm
         End If
 
     End Function
-    Public Function Chk_Hiragana(ByVal PistrStr As String) As Boolean
-        Chk_Hiragana = Regex.IsMatch(PistrStr, "^\p{IsHiragana}*$")
+    Public Function Chk_Hiragana(ByVal c As String) As Boolean
+        Return (ChrW(&H3041) <= c AndAlso c <= ChrW(&H309F)) OrElse c = ChrW(&H30FC) OrElse c = ChrW(&H30A0)
 
     End Function
 

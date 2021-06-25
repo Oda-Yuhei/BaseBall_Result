@@ -18955,14 +18955,14 @@ Namespace PlayerManagementDataSetTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT Player_id, name, rub,Batter_id, ISNULL( AR, '0') as AR,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ROUND(CONVERT(flo"& _ 
-                "at,H)/CONVERT(float,(AR-IBBandHBP - HBP-SH)),3) as average,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ROUND(CONVERT(float"& _ 
-                ",(H + IBBandHBP))/CONVERT(float,((AR - IBBandHBP - HBP - SH) + H + IBBandHBP + S"& _ 
-                "H)),3) as OBP,H, LH, HR, HBP, SH, IBBandHBP, SO, SB, ID, Expr1, Expr2, position,"& _ 
-                " TandB, comment "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM dbo.vw_BatterResult"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE NOT AR = 0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"AND Player_id = @p"& _ 
-                "arameter"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(1).CommandText = "SELECT Player_id, name, rub,Batter_id, ISNULL( AR, '0') as AR,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ROUND("&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"CASE WHEN"& _ 
+                " AR<>0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"THEN CONVERT(float,H)/CONVERT(float,(AR-IBBandHBP - HBP-SH))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ELSE 0 END"& _ 
+                " ,3) as average,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ROUND("&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"CASE WHEN AR<>0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"THEN CONVERT(float,(H + IBBandHBP))/C"& _ 
+                "ONVERT(float,((AR - IBBandHBP - HBP - SH) + H + IBBandHBP + SH))ELSE 0 END ,3) a"& _ 
+                "s OBP,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"H, LH, HR, HBP, SH, IBBandHBP, SO, SB, ID, Expr1, Expr2, position, TandB"& _ 
+                ", comment "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM dbo.vw_BatterResult"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  Player_id =@Param"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@parameter", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Player_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Player_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT Player_id, name, rub,Batter_id, ISNULL( AR, '0') as AR,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ROUND(CONVERT(flo"& _ 
@@ -19017,10 +19017,10 @@ Namespace PlayerManagementDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByAdvancedBatter(ByVal dataTable As PlayerManagementDataSet.vw_BatterResultDataTable, ByVal parameter As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function FillByAdvancedBatter(ByVal dataTable As PlayerManagementDataSet.vw_BatterResultDataTable, ByVal Param As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (parameter.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(parameter.Value,Integer)
+            If (Param.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
@@ -19467,20 +19467,21 @@ Namespace PlayerManagementDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, name, rub, position, APP, IP, W,SV,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"IsNull(ROUND(CONVERT (float, null"& _ 
-                "if(ER,0) * 9) / CONVERT (float, nullif(IP,0)), 2),CONVERT(float,0)) AS ERA, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Is"& _ 
-                "Null(ROUND(CONVERT (float, nullif(K,0)) / CONVERT (float, nullif(B,0)), 2), CONV"& _ 
-                "ERT(float,0)) AS KBB,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"R, ER, K, B, Player_id, Pitcher_id FROM vw_PitcherResult"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE NOT APP = 0"
+            Me._commandCollection(0).CommandText = "SELECT "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ROUND(CASE WHEN IP <> 0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"THEN CONVERT (float, ER * 9) / CONVERT (float, "& _ 
+                "IP)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ELSE 212"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"END, 2) AS ERA, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ROUND("&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"CASE "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHEN K=0 AND B=0 THEN 0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHEN B="& _ 
+                "0 THEN K"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHEN K=0 THEN B"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ELSE CONVERT (float, K) / CONVERT (float, B)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"END"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&", "& _ 
+                "2) AS KBB,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"APP, B, ER, ID, IP, K, Pitcher_id, Player_id, R, SV, W, name, positi"& _ 
+                "on, rub "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM dbo.vw_PitcherResult "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE NOT APP = 0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT APP, B, ER, ISNULL(ROUND(CONVERT (float, NULLIF (ER, 0) * 9) / CONVERT (fl"& _ 
-                "oat, NULLIF (IP, 0)), 2), CONVERT (float, 0)) AS ERA, ID, IP, K, ISNULL(ROUND(CO"& _ 
-                "NVERT (float, NULLIF (K, 0)) / CONVERT (float, NULLIF (B, 0)), 2), CONVERT (floa"& _ 
-                "t, 0)) AS KBB, Pitcher_id, Player_id, R, SV, W, name, position, rub FROM vw_Pitc"& _ 
-                "herResult WHERE (Player_id = @Parameter)"
+            Me._commandCollection(1).CommandText = "SELECT APP, B, ER, ROUND(CASE WHEN IP <> 0 THEN CONVERT (float , ER * 9) / CONVER"& _ 
+                "T (float , IP) ELSE 212 END, 2) AS ERA, ID, IP, K, ROUND(CASE WHEN K = 0 AND B ="& _ 
+                " 0 THEN 0 WHEN B = 0 THEN K WHEN K = 0 THEN B ELSE CONVERT (float , K) / CONVERT"& _ 
+                " (float , B) END, 2) AS KBB, Pitcher_id, Player_id, R, SV, W, name, position, ru"& _ 
+                "b FROM vw_PitcherResult WHERE (Player_id = @Param)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parameter", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Player_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Player_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19511,10 +19512,10 @@ Namespace PlayerManagementDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByAdvancedPitcher(ByVal dataTable As PlayerManagementDataSet.vw_PitcherResultDataTable, ByVal Parameter As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function FillByAdvancedPitcher(ByVal dataTable As PlayerManagementDataSet.vw_PitcherResultDataTable, ByVal Param As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (Parameter.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Parameter.Value,Integer)
+            If (Param.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
