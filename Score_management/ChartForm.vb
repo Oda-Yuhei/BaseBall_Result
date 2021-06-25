@@ -182,9 +182,9 @@ Public Class ChartForm
     End Sub
     Private Sub defaultDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles defaultDataGridView.CellContentClick
         Dim cardform As New PlayerCardForm
-        cardform.Show()
-
         Dim PlayerID As Integer = defaultDataGridView.CurrentRow.Cells(0).Value
+        cardform.ID = PlayerID
+        cardform.Show()
 
         cardform.Vw_PlayerlistTableAdapter.FillByAdvancedInfo(cardform.PlayerManagementDataSet.vw_Playerlist, PlayerID)
         cardform.Vw_PitcherResultTableAdapter.FillByAdvancedPitcher(cardform.PlayerManagementDataSet.vw_PitcherResult, New System.Nullable(Of Integer)(PlayerID))
@@ -193,9 +193,9 @@ Public Class ChartForm
 
     Private Sub BatterResultDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles BatterResultDataGridView.CellContentClick
         Dim cardform As New PlayerCardForm
-        cardform.Show()
-
         Dim PlayerID As Integer = BatterResultDataGridView.CurrentRow.Cells(0).Value
+        cardform.ID = PlayerID
+        cardform.Show()
 
         cardform.Vw_PlayerlistTableAdapter.FillByAdvancedInfo(cardform.PlayerManagementDataSet.vw_Playerlist, PlayerID)
         cardform.Vw_PitcherResultTableAdapter.FillByAdvancedPitcher(cardform.PlayerManagementDataSet.vw_PitcherResult, New System.Nullable(Of Integer)(PlayerID))
@@ -204,10 +204,11 @@ Public Class ChartForm
 
     Private Sub PitcherResultDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles PitcherResultDataGridView.CellContentClick
         Dim cardform As New PlayerCardForm
-        cardform.Show()
 
         Dim PlayerID As Integer = PitcherResultDataGridView.CurrentRow.Cells(0).Value
+        cardform.ID = PlayerID
 
+        cardform.Show()
         cardform.Vw_PlayerlistTableAdapter.FillByAdvancedInfo(cardform.PlayerManagementDataSet.vw_Playerlist, PlayerID)
         cardform.Vw_PitcherResultTableAdapter.FillByAdvancedPitcher(cardform.PlayerManagementDataSet.vw_PitcherResult, New System.Nullable(Of Integer)(PlayerID))
         cardform.Vw_BatterResultTableAdapter.FillByAdvancedBatter(cardform.PlayerManagementDataSet.vw_BatterResult, New System.Nullable(Of Integer)(PlayerID))

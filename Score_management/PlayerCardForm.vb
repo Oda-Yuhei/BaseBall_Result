@@ -3,6 +3,7 @@ Imports System.Text.RegularExpressions
 Public Class PlayerCardForm
     Private IsImage As Boolean
     Public ByteArray As Byte()
+    Public ID As String
     Private Sub PlayerCardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
@@ -34,23 +35,27 @@ Public Class PlayerCardForm
         Dim dr As SqlClient.SqlDataReader
         Dim sql As String
 
-        cn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-        cn.Open()
-        Dim id As String = Me.Player_idTextBox.Text
-        sql = "SELECT FileData FROM UploadFile WHERE Player_id = " & id
-        cd.CommandText = sql
-        cd.Connection = cn
-        dr = cd.ExecuteReader
-        While dr.Read
-            If Not IsDBNull(dr("FileData")) Then
-                ByteArray = dr("FileData")
-                PictureBox1.Image = ByteArrayToImage(ByteArray)
-            End If
-        End While
-        dr.Close()
-        cd.Dispose()
-        cn.Close()
-        cn.Dispose()
+        Try
+
+            cn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
+            cn.Open()
+            sql = "SELECT FileData FROM UploadFile WHERE Player_id = " & Me.ID
+            cd.CommandText = sql
+            cd.Connection = cn
+            dr = cd.ExecuteReader
+            While dr.Read
+                If Not IsDBNull(dr("FileData")) Then
+                    ByteArray = dr("FileData")
+                    PictureBox1.Image = ByteArrayToImage(ByteArray)
+                End If
+            End While
+            dr.Close()
+            cd.Dispose()
+            cn.Close()
+            cn.Dispose()
+        Catch ex As Exception
+            MsgBox("errer 01")
+        End Try
 
 
 
@@ -260,13 +265,17 @@ Public Class PlayerCardForm
 
     ' ---[関数]ドラッグされたものがフォルダーかファイルかを判別
     Private Function fnc_FileSystemType(ByVal drags() As String) As String
-        If (System.IO.File.Exists(drags(0)) = True) Then
-            Return "File"
-        ElseIf (System.IO.Directory.Exists(drags(0)) = True) Then
-            Return "Folder"
-        Else
-            Return "None"
-        End If
+        Try
+            If (System.IO.File.Exists(drags(0)) = True) Then
+                Return "File"
+            ElseIf (System.IO.Directory.Exists(drags(0)) = True) Then
+                Return "Folder"
+            Else
+                Return "None"
+            End If
+        Catch ex As Exception
+
+        End Try
     End Function
 
 
