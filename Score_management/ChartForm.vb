@@ -181,10 +181,6 @@ Public Class ChartForm
         Me.PositionComboBox.Visible = False
         Me.EnterButton.Visible = False
     End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-        advancedsarcform.Show()
-    End Sub
-
     Private Sub PitcherResultDataGridView_RowEnter(sender As Object, e As DataGridViewCellEventArgs)
         MsgBox("enter")
     End Sub
@@ -212,11 +208,10 @@ Public Class ChartForm
 
     Private Sub PitcherResultDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles PitcherResultDataGridView.CellContentClick
         Dim cardform As New PlayerCardForm
-
         Dim PlayerID As Integer = PitcherResultDataGridView.CurrentRow.Cells(0).Value
         cardform.ID = PlayerID
-
         cardform.Show()
+
         cardform.Vw_PlayerlistTableAdapter.FillByAdvancedInfo(cardform.PlayerManagementDataSet.vw_Playerlist, PlayerID)
         cardform.Vw_PitcherResultTableAdapter.FillByAdvancedPitcher(cardform.PlayerManagementDataSet.vw_PitcherResult, New System.Nullable(Of Integer)(PlayerID))
         cardform.Vw_BatterResultTableAdapter.FillByAdvancedBatter(cardform.PlayerManagementDataSet.vw_BatterResult, New System.Nullable(Of Integer)(PlayerID))

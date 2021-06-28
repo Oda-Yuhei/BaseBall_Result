@@ -6,15 +6,8 @@ Public Class PlayerCardForm
     Public ID As String
     Private Sub PlayerCardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.AllowDrop = True
-        Me.PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
-        Me.Label_FileName.Text = "ファイルをドラッグ＆ドロップしてください"
 
-        Me.Vw_PitcherResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_PitcherResult)
-        Me.Player_ResultTableAdapter.Fill(Me.PlayerManagementDataSet.Player_Result)
-        Me.Vw_PlayerlistTableAdapter.Fill(Me.PlayerManagementDataSet.vw_Playerlist)
-        Me.Vw_BatterResultTableAdapter.Fill(Me.PlayerManagementDataSet.vw_BatterResult)
-
+        '閲覧者、管理者切り替え
         If Not LogonForm.Auth = True Then
             Button.Visible = False
             Button1.Visible = False
@@ -25,7 +18,12 @@ Public Class PlayerCardForm
             Me.Vw_PitcherResultDataGridView.EditMode = DataGridViewEditMode.EditOnEnter
             Me.AdvancedBatterResultDataGridView.EditMode = DataGridViewEditMode.EditOnEnter
         End If
+
+
         '画像インポート
+        Me.AllowDrop = True
+        Me.PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        Me.Label_FileName.Text = "ファイルをドラッグ＆ドロップしてください"
 
         Dim cn As New SqlClient.SqlConnection
         Dim cd As New SqlClient.SqlCommand
@@ -219,40 +217,40 @@ Public Class PlayerCardForm
                 End Using
             Catch ex As Exception
                 MsgBox(ex.Message)
-                End Try
-                sql = "UPDATE UploadFile SET FileData = @FileData, UploadFileName = @UploadFileName WHERE Player_id = @Player_id"
-                'sql = "INSERT INTO UploadFile(FileID,FileData,UploadFileName,Player_id) VALUES( NEWID(), @FileData,@UploadFileName,@Player_id)"
-                Dim Filename As String = Me.Player_idTextBox.Text & Me.NameTextBox.Text & ".jpg"
-                Dim datastr As Byte() = ImageToByteArray(PictureBox1.Image)
-                Try
-                    Using conn As New SqlConnection
-                        conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-                        conn.Open()
-                        Using transaction As SqlTransaction = conn.BeginTransaction()
-                            Try
-                                Using cmd As New SqlCommand(sql, conn, transaction)
-                                    cmd.Parameters.AddWithValue("@FileData", datastr)
-                                    cmd.Parameters.AddWithValue("@UploadFileName", Filename)
-                                    cmd.Parameters.AddWithValue("@Player_id", Player_idTextBox.Text)
-                                    cmd.ExecuteNonQuery()
+            End Try
+            sql = "UPDATE UploadFile SET FileData = @FileData, UploadFileName = @UploadFileName WHERE Player_id = @Player_id"
+            'sql = "INSERT INTO UploadFile(FileID,FileData,UploadFileName,Player_id) VALUES( NEWID(), @FileData,@UploadFileName,@Player_id)"
+            Dim Filename As String = Me.Player_idTextBox.Text & Me.NameTextBox.Text & ".jpg"
+            Dim datastr As Byte() = ImageToByteArray(PictureBox1.Image)
+            Try
+                Using conn As New SqlConnection
+                    conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
+                    conn.Open()
+                    Using transaction As SqlTransaction = conn.BeginTransaction()
+                        Try
+                            Using cmd As New SqlCommand(sql, conn, transaction)
+                                cmd.Parameters.AddWithValue("@FileData", datastr)
+                                cmd.Parameters.AddWithValue("@UploadFileName", Filename)
+                                cmd.Parameters.AddWithValue("@Player_id", Player_idTextBox.Text)
+                                cmd.ExecuteNonQuery()
 
-                                    transaction.Commit()
-                                    ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
-                                End Using
-                            Catch ex As Exception
-                                transaction.Rollback()
-                                MsgBox(ex.StackTrace)
+                                transaction.Commit()
+                                ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
+                            End Using
+                        Catch ex As Exception
+                            transaction.Rollback()
+                            MsgBox(ex.StackTrace)
 
-                            End Try
-                        End Using
+                        End Try
                     End Using
+                End Using
 
-                    Me.Close()
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
-            ElseIf result = DialogResult.Cancel Then
-                Return
+                Me.Close()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        ElseIf result = DialogResult.Cancel Then
+            Return
         End If
     End Sub
     Public Shared Function ByteArrayToImage(ByVal b As Byte()) As Image
@@ -379,8 +377,5 @@ Public Class PlayerCardForm
     End Function
     Public Function Chk_Hiragana(ByVal c As String) As Boolean
         Return (ChrW(&H3041) <= c AndAlso c <= ChrW(&H309F)) OrElse c = ChrW(&H30FC) OrElse c = ChrW(&H30A0)
-
     End Function
-
-
 End Class
