@@ -561,11 +561,10 @@ Partial Class RegisterPlayerForm
         '
         'Label_FileName
         '
-        Me.Label_FileName.AutoSize = True
         Me.Label_FileName.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label_FileName.Location = New System.Drawing.Point(13, 258)
         Me.Label_FileName.Name = "Label_FileName"
-        Me.Label_FileName.Size = New System.Drawing.Size(15, 19)
+        Me.Label_FileName.Size = New System.Drawing.Size(194, 110)
         Me.Label_FileName.TabIndex = 101
         Me.Label_FileName.Text = ":"
         '

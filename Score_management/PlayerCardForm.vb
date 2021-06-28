@@ -20,7 +20,7 @@ Public Class PlayerCardForm
         End If
 
 
-        '画像インポート
+        '画像表示
         Me.AllowDrop = True
         Me.PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         Me.Label_FileName.Text = "ファイルをドラッグ＆ドロップしてください"
@@ -34,7 +34,7 @@ Public Class PlayerCardForm
 
             cn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
             cn.Open()
-            sql = "SELECT FileData FROM UploadFile WHERE Player_id = " & Me.ID
+            sql = "SELECT FileData FROM UploadFile WHERE Image_id = " & Me.ID
             cd.CommandText = sql
             cd.Connection = cn
             dr = cd.ExecuteReader
@@ -49,7 +49,7 @@ Public Class PlayerCardForm
             cn.Close()
             cn.Dispose()
         Catch ex As Exception
-            MsgBox("errer 01")
+
         End Try
 
 
@@ -107,6 +107,20 @@ Public Class PlayerCardForm
                             MsgBox(ex.StackTrace)
                         End Try
                     End Using
+                    sql = "DELETE FROM UploadFile WHERE Image_id = @player_id"
+                    Using transaction As SqlTransaction = conn.BeginTransaction()
+                        Try
+                            Using cmd As New SqlCommand(sql, conn, transaction)
+                                cmd.Parameters.AddWithValue("@Player_id", Me.Player_idTextBox.Text)
+
+                                cmd.ExecuteNonQuery()
+                                transaction.Commit()
+                            End Using
+                        Catch ex As Exception
+                            transaction.Rollback()
+                            MsgBox(ex.StackTrace)
+                        End Try
+                    End Using
 
                     sql = "DELETE FROM Player_Result WHERE Player_id = @player_id"
                     Using transaction As SqlTransaction = conn.BeginTransaction()
@@ -148,17 +162,9 @@ Public Class PlayerCardForm
         Dim result As DialogResult = MessageBox.Show("データを上書きしてもよろしいですか？", "データ編集", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2)
         If result = DialogResult.OK Then
             Dim sql As String = "UPDATE Player SET name = @name, rub = @rub, origin_school = @origin_school, position = @position, TandB = @TandB, comment = @comment WHERE Player_id = @player_id;"
+            sql += "UPDATE Pitcher SET APP = @app, IP = @ip, R = @r, ER = @er, K = @k, B = @b, W =@w, SV = @sv WHERE Pitcher_id = @Pitcher_id;"
+            sql += "UPDATE Batter SET AR = @ar, H = @h, LH = @lh, HR = @hr, HBP = @hbp, SH = @sh, IBBandHBP = @ibbandhbp, SO = @so, SB = @sb WHERE Batter_id = @Batter_id;"
 
-            Dim Pit As Boolean = False
-            Dim Bat As Boolean = False
-            If Vw_PitcherResultDataGridView.Rows.Count <> 0 Then
-                sql += "UPDATE Pitcher SET APP = @app, IP = @ip, R = @r, ER = @er, K = @k, B = @b, W =@w, SV = @sv WHERE Pitcher_id = @Pitcher_id;"
-                Pit = True
-            End If
-            If AdvancedBatterResultDataGridView.Rows.Count <> 0 Then
-                sql += "UPDATE Batter SET AR = @ar, H = @h, LH = @lh, HR = @hr, HBP = @hbp, SH = @sh, IBBandHBP = @ibbandhbp, SO = @so, SB = @sb WHERE Batter_id = @Batter_id;"
-                Bat = True
-            End If
             Try
                 Using conn As New SqlConnection
                     conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
@@ -174,32 +180,27 @@ Public Class PlayerCardForm
                                 cmd.Parameters.AddWithValue("@TandB", Me.TandBTextBox.Text)
                                 cmd.Parameters.AddWithValue("@comment", Me.CommentTextBox.Text)
                                 cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
-
-                                'Pitche
-                                If Pit Then
-                                    cmd.Parameters.AddWithValue("@app", Vw_PitcherResultDataGridView.Rows(0).Cells(3).Value)
-                                    cmd.Parameters.AddWithValue("@ip", Vw_PitcherResultDataGridView.Rows(0).Cells(4).Value)
-                                    cmd.Parameters.AddWithValue("@r", Vw_PitcherResultDataGridView.Rows(0).Cells(5).Value)
-                                    cmd.Parameters.AddWithValue("@er", Vw_PitcherResultDataGridView.Rows(0).Cells(6).Value)
-                                    cmd.Parameters.AddWithValue("@k", Vw_PitcherResultDataGridView.Rows(0).Cells(7).Value)
-                                    cmd.Parameters.AddWithValue("@b", Vw_PitcherResultDataGridView.Rows(0).Cells(8).Value)
-                                    cmd.Parameters.AddWithValue("@w", Vw_PitcherResultDataGridView.Rows(0).Cells(9).Value)
-                                    cmd.Parameters.AddWithValue("@sv", Vw_PitcherResultDataGridView.Rows(0).Cells(10).Value)
-                                    cmd.Parameters.AddWithValue("@Pitcher_id", Me.Player_idTextBox.Text)
-                                End If
+                                'Pitcher
+                                cmd.Parameters.AddWithValue("@app", Vw_PitcherResultDataGridView.Rows(0).Cells(3).Value)
+                                cmd.Parameters.AddWithValue("@ip", Vw_PitcherResultDataGridView.Rows(0).Cells(4).Value)
+                                cmd.Parameters.AddWithValue("@r", Vw_PitcherResultDataGridView.Rows(0).Cells(5).Value)
+                                cmd.Parameters.AddWithValue("@er", Vw_PitcherResultDataGridView.Rows(0).Cells(6).Value)
+                                cmd.Parameters.AddWithValue("@k", Vw_PitcherResultDataGridView.Rows(0).Cells(7).Value)
+                                cmd.Parameters.AddWithValue("@b", Vw_PitcherResultDataGridView.Rows(0).Cells(8).Value)
+                                cmd.Parameters.AddWithValue("@w", Vw_PitcherResultDataGridView.Rows(0).Cells(9).Value)
+                                cmd.Parameters.AddWithValue("@sv", Vw_PitcherResultDataGridView.Rows(0).Cells(10).Value)
+                                cmd.Parameters.AddWithValue("@Pitcher_id", Me.Player_idTextBox.Text)
                                 'Batter
-                                If Bat Then
-                                    cmd.Parameters.AddWithValue("@ar", AdvancedBatterResultDataGridView.Rows(0).Cells(1).Value)
-                                    cmd.Parameters.AddWithValue("@h", AdvancedBatterResultDataGridView.Rows(0).Cells(4).Value)
-                                    cmd.Parameters.AddWithValue("@lh", AdvancedBatterResultDataGridView.Rows(0).Cells(5).Value)
-                                    cmd.Parameters.AddWithValue("@hr", AdvancedBatterResultDataGridView.Rows(0).Cells(6).Value)
-                                    cmd.Parameters.AddWithValue("@hbp", AdvancedBatterResultDataGridView.Rows(0).Cells(7).Value)
-                                    cmd.Parameters.AddWithValue("@sh", AdvancedBatterResultDataGridView.Rows(0).Cells(8).Value)
-                                    cmd.Parameters.AddWithValue("@ibbandhbp", AdvancedBatterResultDataGridView.Rows(0).Cells(10).Value)
-                                    cmd.Parameters.AddWithValue("@so", AdvancedBatterResultDataGridView.Rows(0).Cells(9).Value)
-                                    cmd.Parameters.AddWithValue("@sb", AdvancedBatterResultDataGridView.Rows(0).Cells(11).Value)
-                                    cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
-                                End If
+                                cmd.Parameters.AddWithValue("@ar", AdvancedBatterResultDataGridView.Rows(0).Cells(1).Value)
+                                cmd.Parameters.AddWithValue("@h", AdvancedBatterResultDataGridView.Rows(0).Cells(4).Value)
+                                cmd.Parameters.AddWithValue("@lh", AdvancedBatterResultDataGridView.Rows(0).Cells(5).Value)
+                                cmd.Parameters.AddWithValue("@hr", AdvancedBatterResultDataGridView.Rows(0).Cells(6).Value)
+                                cmd.Parameters.AddWithValue("@hbp", AdvancedBatterResultDataGridView.Rows(0).Cells(7).Value)
+                                cmd.Parameters.AddWithValue("@sh", AdvancedBatterResultDataGridView.Rows(0).Cells(8).Value)
+                                cmd.Parameters.AddWithValue("@ibbandhbp", AdvancedBatterResultDataGridView.Rows(0).Cells(10).Value)
+                                cmd.Parameters.AddWithValue("@so", AdvancedBatterResultDataGridView.Rows(0).Cells(9).Value)
+                                cmd.Parameters.AddWithValue("@sb", AdvancedBatterResultDataGridView.Rows(0).Cells(11).Value)
+                                cmd.Parameters.AddWithValue("@Batter_id", Me.Player_idTextBox.Text)
 
 
                                 cmd.ExecuteNonQuery()
@@ -217,8 +218,11 @@ Public Class PlayerCardForm
                 End Using
             Catch ex As Exception
                 MsgBox(ex.Message)
+                MsgBox(ex.StackTrace)
             End Try
-            sql = "UPDATE UploadFile SET FileData = @FileData, UploadFileName = @UploadFileName WHERE Player_id = @Player_id"
+
+
+            sql = "UPDATE UploadFile SET FileData = @FileData, UploadFileName = @UploadFileName WHERE Image_id = @Player_id"
             'sql = "INSERT INTO UploadFile(FileID,FileData,UploadFileName,Player_id) VALUES( NEWID(), @FileData,@UploadFileName,@Player_id)"
             Dim Filename As String = Me.Player_idTextBox.Text & Me.NameTextBox.Text & ".jpg"
             Dim datastr As Byte() = ImageToByteArray(PictureBox1.Image)
@@ -240,7 +244,7 @@ Public Class PlayerCardForm
                         Catch ex As Exception
                             transaction.Rollback()
                             MsgBox(ex.StackTrace)
-
+                            MsgBox(ex.Message)
                         End Try
                     End Using
                 End Using

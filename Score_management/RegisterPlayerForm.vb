@@ -1,6 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
 Public Class RegisterPlayerForm
+    Public ByteArray As Byte()
+    Private ID As Integer = 0
     Private Sub EnterButton_Click(sender As Object, e As EventArgs) Handles EnterButton.Click
         If intjadge() Then '成績textboxの入力が正しいのか判断
             Return
@@ -86,7 +88,29 @@ Public Class RegisterPlayerForm
 
                         End Try
                     End Using
-                    Sql = "INSERT INTO  Player_Result VALUES((SELECT Max(Player_id) FROM Player),(SELECT Max(Batter_id) FROM Batter),(SELECT Max(Pitcher_id) FROM Pitcher))"
+
+
+
+                    Sql = "INSERT INTO UploadFile(FileID,FileData,UploadFileName) VALUES(NEWID(), @FileData, @UploadFileName)"
+                    Dim datastr As Byte() = ImageToByteArray(PictureBox1.Image)
+
+                    Dim Filename As String = ID.ToString & Me.NameTextBox.Text & ".jpg"
+
+                    Using transaction As SqlTransaction = conn.BeginTransaction()
+                        Try
+                            Using cmd As New SqlCommand(Sql, conn, transaction)
+                                cmd.Parameters.AddWithValue("@FileData", datastr)
+                                cmd.Parameters.AddWithValue("@UploadFileName", Filename)
+                                cmd.ExecuteNonQuery()
+                                transaction.Commit()
+
+                            End Using
+                        Catch ex As Exception
+                            transaction.Rollback()
+                            MsgBox(ex.StackTrace)
+                        End Try
+                    End Using
+                    Sql = "INSERT INTO  Player_Result (Player_id, Batter_id,Pitcher_id,Image_ID) VALUES((SELECT Max(Player_id) FROM Player),(SELECT Max(Batter_id) FROM Batter),(SELECT Max(Pitcher_id) FROM Pitcher),(SELECT Max(Image_id) From UploadFile))"
                     Using transaction As SqlTransaction = conn.BeginTransaction()
                         Try
                             Using cmd As New SqlCommand(Sql, conn, transaction)
@@ -211,8 +235,8 @@ Public Class RegisterPlayerForm
         Me.AllowDrop = True
         Me.PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         Me.Label_FileName.Text = "ファイルをドラッグ＆ドロップしてください"
-
         PictureBox1.AllowDrop = True
+        AddID()
     End Sub
 
 
@@ -253,6 +277,16 @@ Public Class RegisterPlayerForm
             Exit Sub
         End If
     End Sub
+    Public Shared Function ImageToByteArray(ByVal img As Image) As Byte()
+        Try
+            Dim imgconv As New ImageConverter()
+            Dim b As Byte() = CType(imgconv.ConvertTo(img, GetType(Byte())), Byte())
+            Return b
+
+        Catch ex As Exception
+            Return Nothing
+        End Try
+    End Function
 
     Private Sub PictureBox1_DragEnter(sender As Object, e As DragEventArgs) Handles PictureBox1.DragEnter
         ' --- コントロール初期化
@@ -281,5 +315,27 @@ Public Class RegisterPlayerForm
                 e.Effect = DragDropEffects.None ' -- コピー不可
                 Me.Label_FileName.Text = "ドラッグ対象が不明です"
         End Select
+    End Sub
+    Public Sub AddID()
+        Try
+            Using con As New SqlConnection
+                Using cmd As New SqlCommand
+                    con.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
+                    cmd.Connection = con
+                    con.Open()
+                    cmd.CommandText = "SELECT MAX(Player_id) AS MAXID FROM Player_Result"
+
+                    Me.ID = cmd.ExecuteScalar()
+                    If ID = Nothing Then
+                        ID = 0
+                    End If
+                    ID += 1
+                End Using
+            End Using
+        Catch ex As Exception
+            ' 例外が発生した時の処理
+            MessageBox.Show(ex.ToString)
+        End Try
+
     End Sub
 End Class
