@@ -36,8 +36,6 @@ Partial Class RegisterPlayerForm
         Me.TandBComboBox = New System.Windows.Forms.ComboBox()
         Me.CommentTextBox = New System.Windows.Forms.TextBox()
         Me.EnterButton = New System.Windows.Forms.Button()
-        Me.K_BBLabel = New System.Windows.Forms.Label()
-        Me.ERALabel = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.ERTextBox = New System.Windows.Forms.TextBox()
@@ -48,8 +46,6 @@ Partial Class RegisterPlayerForm
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.IPTextBox = New System.Windows.Forms.TextBox()
-        Me.OBPLabel = New System.Windows.Forms.Label()
-        Me.AVGLabel = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.SBTextBox = New System.Windows.Forms.TextBox()
@@ -81,6 +77,7 @@ Partial Class RegisterPlayerForm
         '
         'PictureBox1
         '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Location = New System.Drawing.Point(12, 10)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(165, 237)
@@ -170,6 +167,7 @@ Partial Class RegisterPlayerForm
         '
         'PositionComboBox
         '
+        Me.PositionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.PositionComboBox.FormattingEnabled = True
         Me.PositionComboBox.Items.AddRange(New Object() {"投手", "キャッチャー", "ファースト", "セカンド", "ショート", "サード", "外野"})
         Me.PositionComboBox.Location = New System.Drawing.Point(307, 68)
@@ -179,6 +177,7 @@ Partial Class RegisterPlayerForm
         '
         'TandBComboBox
         '
+        Me.TandBComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.TandBComboBox.FormattingEnabled = True
         Me.TandBComboBox.Items.AddRange(New Object() {"右投右打", "右投左打", "右投両打", "左投右打", "左投左打", "左投両打", "両投右打", "両投左打", "両投両打"})
         Me.TandBComboBox.Location = New System.Drawing.Point(307, 178)
@@ -196,33 +195,14 @@ Partial Class RegisterPlayerForm
         '
         'EnterButton
         '
-        Me.EnterButton.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.EnterButton.BackColor = System.Drawing.SystemColors.Control
+        Me.EnterButton.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.EnterButton.Location = New System.Drawing.Point(889, 315)
         Me.EnterButton.Name = "EnterButton"
-        Me.EnterButton.Size = New System.Drawing.Size(114, 50)
+        Me.EnterButton.Size = New System.Drawing.Size(114, 53)
         Me.EnterButton.TabIndex = 100
-        Me.EnterButton.Text = "登録"
-        Me.EnterButton.UseVisualStyleBackColor = True
-        '
-        'K_BBLabel
-        '
-        Me.K_BBLabel.AutoSize = True
-        Me.K_BBLabel.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.K_BBLabel.Location = New System.Drawing.Point(774, 258)
-        Me.K_BBLabel.Name = "K_BBLabel"
-        Me.K_BBLabel.Size = New System.Drawing.Size(123, 22)
-        Me.K_BBLabel.TabIndex = 80
-        Me.K_BBLabel.Text = "K/BB(自動) 　:"
-        '
-        'ERALabel
-        '
-        Me.ERALabel.AutoSize = True
-        Me.ERALabel.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.ERALabel.Location = New System.Drawing.Point(774, 236)
-        Me.ERALabel.Name = "ERALabel"
-        Me.ERALabel.Size = New System.Drawing.Size(133, 22)
-        Me.ERALabel.TabIndex = 79
-        Me.ERALabel.Text = "防御率(自動) 　:"
+        Me.EnterButton.Text = "登　録"
+        Me.EnterButton.UseVisualStyleBackColor = False
         '
         'Label17
         '
@@ -313,26 +293,6 @@ Partial Class RegisterPlayerForm
         Me.IPTextBox.Size = New System.Drawing.Size(147, 22)
         Me.IPTextBox.TabIndex = 17
         Me.IPTextBox.Text = "0"
-        '
-        'OBPLabel
-        '
-        Me.OBPLabel.AutoSize = True
-        Me.OBPLabel.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.OBPLabel.Location = New System.Drawing.Point(511, 294)
-        Me.OBPLabel.Name = "OBPLabel"
-        Me.OBPLabel.Size = New System.Drawing.Size(122, 22)
-        Me.OBPLabel.TabIndex = 68
-        Me.OBPLabel.Text = "出塁率(自動) :"
-        '
-        'AVGLabel
-        '
-        Me.AVGLabel.AutoSize = True
-        Me.AVGLabel.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.AVGLabel.Location = New System.Drawing.Point(511, 272)
-        Me.AVGLabel.Name = "AVGLabel"
-        Me.AVGLabel.Size = New System.Drawing.Size(116, 22)
-        Me.AVGLabel.TabIndex = 67
-        Me.AVGLabel.Text = "打率(自動) 　:"
         '
         'Label10
         '
@@ -572,7 +532,8 @@ Partial Class RegisterPlayerForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1037, 377)
+        Me.BackColor = System.Drawing.SystemColors.Control
+        Me.ClientSize = New System.Drawing.Size(1032, 392)
         Me.Controls.Add(Me.Label_FileName)
         Me.Controls.Add(Me.PositionLabel)
         Me.Controls.Add(Me.Label27)
@@ -585,8 +546,6 @@ Partial Class RegisterPlayerForm
         Me.Controls.Add(Me.SOTextBox)
         Me.Controls.Add(Me.Label23)
         Me.Controls.Add(Me.SHTextBox)
-        Me.Controls.Add(Me.K_BBLabel)
-        Me.Controls.Add(Me.ERALabel)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.ERTextBox)
@@ -597,8 +556,6 @@ Partial Class RegisterPlayerForm
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.IPTextBox)
-        Me.Controls.Add(Me.OBPLabel)
-        Me.Controls.Add(Me.AVGLabel)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.SBTextBox)
@@ -627,8 +584,9 @@ Partial Class RegisterPlayerForm
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
+        Me.MinimumSize = New System.Drawing.Size(1050, 439)
         Me.Name = "RegisterPlayerForm"
-        Me.Text = "RegisterForm"
+        Me.Text = "選手登録"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -649,8 +607,6 @@ Partial Class RegisterPlayerForm
     Friend WithEvents TandBComboBox As ComboBox
     Friend WithEvents CommentTextBox As TextBox
     Friend WithEvents EnterButton As Button
-    Friend WithEvents K_BBLabel As Label
-    Friend WithEvents ERALabel As Label
     Friend WithEvents Label17 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents ERTextBox As TextBox
@@ -661,8 +617,6 @@ Partial Class RegisterPlayerForm
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents IPTextBox As TextBox
-    Friend WithEvents OBPLabel As Label
-    Friend WithEvents AVGLabel As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents SBTextBox As TextBox

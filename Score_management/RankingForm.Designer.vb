@@ -609,13 +609,14 @@ Partial Class RankingForm
         '
         'ExitButton
         '
-        Me.ExitButton.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ExitButton.BackColor = System.Drawing.SystemColors.Control
+        Me.ExitButton.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ExitButton.Location = New System.Drawing.Point(1264, 791)
         Me.ExitButton.Name = "ExitButton"
         Me.ExitButton.Size = New System.Drawing.Size(140, 51)
         Me.ExitButton.TabIndex = 22
-        Me.ExitButton.Text = "更新"
-        Me.ExitButton.UseVisualStyleBackColor = True
+        Me.ExitButton.Text = "更　　新"
+        Me.ExitButton.UseVisualStyleBackColor = False
         '
         'DataGridView10
         '
@@ -1085,6 +1086,7 @@ Partial Class RankingForm
         Me.TableAdapterManager.Player_ResultTableAdapter = Nothing
         Me.TableAdapterManager.PlayerTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Score_management.PlayerManagementDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.UploadFileTableAdapter = Nothing
         '
         'PlayerManagementDataSet1
         '
@@ -1185,6 +1187,7 @@ Partial Class RankingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1498, 890)
         Me.Controls.Add(Me.TeamAVGOBPViewDataGridView)
         Me.Controls.Add(Me.DataGridView6)

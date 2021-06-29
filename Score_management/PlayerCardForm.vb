@@ -1,11 +1,11 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
+Imports System.Configuration
 Public Class PlayerCardForm
     Private IsImage As Boolean
     Public ByteArray As Byte()
     Public ID As String
     Private Sub PlayerCardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
 
         '閲覧者、管理者切り替え
         If Not LogonForm.Auth = True Then
@@ -19,7 +19,6 @@ Public Class PlayerCardForm
             Me.AdvancedBatterResultDataGridView.EditMode = DataGridViewEditMode.EditOnEnter
         End If
 
-
         '画像表示
         Me.AllowDrop = True
         Me.PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
@@ -30,29 +29,33 @@ Public Class PlayerCardForm
         Dim dr As SqlClient.SqlDataReader
         Dim sql As String
 
-        Try
+        Dim settings As ConnectionStringSettings
+        settings = ConfigurationManager.ConnectionStrings("Score_management.My.MySettings.PlayerManagementConnectionString")
+        If settings Is Nothing Then
+            MsgBox("app.configに未登録、接続文字列エラー")
+        Else
+            Try
+                cn.ConnectionString = settings.ConnectionString
+                cn.Open()
+                sql = "SELECT FileData FROM UploadFile WHERE Image_id = " & Me.ID
+                cd.CommandText = sql
+                cd.Connection = cn
+                dr = cd.ExecuteReader
+                While dr.Read
+                    If Not IsDBNull(dr("FileData")) Then
+                        ByteArray = dr("FileData")
+                        PictureBox1.Image = ByteArrayToImage(ByteArray)
+                    End If
+                End While
+                dr.Close()
+                cd.Dispose()
+                cn.Close()
+                cn.Dispose()
+            Catch ex As Exception
 
-            cn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-            cn.Open()
-            sql = "SELECT FileData FROM UploadFile WHERE Image_id = " & Me.ID
-            cd.CommandText = sql
-            cd.Connection = cn
-            dr = cd.ExecuteReader
-            While dr.Read
-                If Not IsDBNull(dr("FileData")) Then
-                    ByteArray = dr("FileData")
-                    PictureBox1.Image = ByteArrayToImage(ByteArray)
-                End If
-            End While
-            dr.Close()
-            cd.Dispose()
-            cn.Close()
-            cn.Dispose()
-        Catch ex As Exception
+            End Try
 
-        End Try
-
-
+        End If
 
     End Sub
 
@@ -61,82 +64,87 @@ Public Class PlayerCardForm
         If result = DialogResult.OK Then
             Try
                 Using conn As New SqlConnection
-                    conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-                    conn.Open()
-                    Dim sql As String = "DELETE FROM Pitcher WHERE Pitcher_id = (SELECT Pitcher_id FROM Player_Result WHERE Player_id = @player_id)"
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
+                    Dim settings As ConnectionStringSettings
+                    settings = ConfigurationManager.ConnectionStrings("Score_management.My.MySettings.PlayerManagementConnectionString")
+                    If settings Is Nothing Then
+                        MsgBox("app.configに未登録、接続文字列エラー")
+                    Else
+                        conn.ConnectionString = settings.ConnectionString
+                        conn.Open()
+                        Dim sql As String = "DELETE FROM Pitcher WHERE Pitcher_id = (SELECT Pitcher_id FROM Player_Result WHERE Player_id = @player_id)"
+                        Using transaction As SqlTransaction = conn.BeginTransaction()
+                            Try
+                                Using cmd As New SqlCommand(sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
 
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
-                        End Try
-                    End Using
+                                    cmd.ExecuteNonQuery()
+                                    transaction.Commit()
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
+                            End Try
+                        End Using
 
-                    sql = "DELETE FROM Batter WHERE Batter_id = (SELECT Batter_id FROM Player_Result WHERE Player_id = @player_id)"
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
+                        sql = "DELETE FROM Batter WHERE Batter_id = (SELECT Batter_id FROM Player_Result WHERE Player_id = @player_id)"
+                        Using transaction As SqlTransaction = conn.BeginTransaction()
+                            Try
+                                Using cmd As New SqlCommand(sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
 
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
-                        End Try
-                    End Using
+                                    cmd.ExecuteNonQuery()
+                                    transaction.Commit()
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
+                            End Try
+                        End Using
 
-                    sql = "DELETE FROM Player WHERE Player_id = @player_id"
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
+                        sql = "DELETE FROM Player WHERE Player_id = @player_id"
+                        Using transaction As SqlTransaction = conn.BeginTransaction()
+                            Try
+                                Using cmd As New SqlCommand(sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
 
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
-                        End Try
-                    End Using
-                    sql = "DELETE FROM UploadFile WHERE Image_id = @player_id"
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@Player_id", Me.Player_idTextBox.Text)
+                                    cmd.ExecuteNonQuery()
+                                    transaction.Commit()
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
+                            End Try
+                        End Using
+                        sql = "DELETE FROM UploadFile WHERE Image_id = @player_id"
+                        Using transaction As SqlTransaction = conn.BeginTransaction()
+                            Try
+                                Using cmd As New SqlCommand(sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@Player_id", Me.Player_idTextBox.Text)
 
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
-                        End Try
-                    End Using
+                                    cmd.ExecuteNonQuery()
+                                    transaction.Commit()
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
+                            End Try
+                        End Using
 
-                    sql = "DELETE FROM Player_Result WHERE Player_id = @player_id"
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
+                        sql = "DELETE FROM Player_Result WHERE Player_id = @player_id"
+                        Using transaction As SqlTransaction = conn.BeginTransaction()
+                            Try
+                                Using cmd As New SqlCommand(sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
 
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
-                        End Try
-                    End Using
-
+                                    cmd.ExecuteNonQuery()
+                                    transaction.Commit()
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
+                            End Try
+                        End Using
+                    End If
                 End Using
             Catch ex As Exception
 
@@ -167,54 +175,60 @@ Public Class PlayerCardForm
 
             Try
                 Using conn As New SqlConnection
-                    conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-                    conn.Open()
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(sql, conn, transaction)
-                                'Player
-                                cmd.Parameters.AddWithValue("@name", Me.NameTextBox.Text)
-                                cmd.Parameters.AddWithValue("@rub", Me.RubTextBox.Text)
-                                cmd.Parameters.AddWithValue("@origin_school", Me.Origin_schoolTextBox.Text)
-                                cmd.Parameters.AddWithValue("@position", Me.PositionTextBox.Text)
-                                cmd.Parameters.AddWithValue("@TandB", Me.TandBTextBox.Text)
-                                cmd.Parameters.AddWithValue("@comment", Me.CommentTextBox.Text)
-                                cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
-                                'Pitcher
-                                cmd.Parameters.AddWithValue("@app", Vw_PitcherResultDataGridView.Rows(0).Cells(3).Value)
-                                cmd.Parameters.AddWithValue("@ip", Vw_PitcherResultDataGridView.Rows(0).Cells(4).Value)
-                                cmd.Parameters.AddWithValue("@r", Vw_PitcherResultDataGridView.Rows(0).Cells(5).Value)
-                                cmd.Parameters.AddWithValue("@er", Vw_PitcherResultDataGridView.Rows(0).Cells(6).Value)
-                                cmd.Parameters.AddWithValue("@k", Vw_PitcherResultDataGridView.Rows(0).Cells(7).Value)
-                                cmd.Parameters.AddWithValue("@b", Vw_PitcherResultDataGridView.Rows(0).Cells(8).Value)
-                                cmd.Parameters.AddWithValue("@w", Vw_PitcherResultDataGridView.Rows(0).Cells(9).Value)
-                                cmd.Parameters.AddWithValue("@sv", Vw_PitcherResultDataGridView.Rows(0).Cells(10).Value)
-                                cmd.Parameters.AddWithValue("@Pitcher_id", Me.Player_idTextBox.Text)
-                                'Batter
-                                cmd.Parameters.AddWithValue("@ar", AdvancedBatterResultDataGridView.Rows(0).Cells(1).Value)
-                                cmd.Parameters.AddWithValue("@h", AdvancedBatterResultDataGridView.Rows(0).Cells(4).Value)
-                                cmd.Parameters.AddWithValue("@lh", AdvancedBatterResultDataGridView.Rows(0).Cells(5).Value)
-                                cmd.Parameters.AddWithValue("@hr", AdvancedBatterResultDataGridView.Rows(0).Cells(6).Value)
-                                cmd.Parameters.AddWithValue("@hbp", AdvancedBatterResultDataGridView.Rows(0).Cells(7).Value)
-                                cmd.Parameters.AddWithValue("@sh", AdvancedBatterResultDataGridView.Rows(0).Cells(8).Value)
-                                cmd.Parameters.AddWithValue("@ibbandhbp", AdvancedBatterResultDataGridView.Rows(0).Cells(10).Value)
-                                cmd.Parameters.AddWithValue("@so", AdvancedBatterResultDataGridView.Rows(0).Cells(9).Value)
-                                cmd.Parameters.AddWithValue("@sb", AdvancedBatterResultDataGridView.Rows(0).Cells(11).Value)
-                                cmd.Parameters.AddWithValue("@Batter_id", Me.Player_idTextBox.Text)
+                    Dim settings As ConnectionStringSettings
+                    settings = ConfigurationManager.ConnectionStrings("Score_management.My.MySettings.PlayerManagementConnectionString")
+                    If settings Is Nothing Then
+                        MsgBox("app.configに未登録、接続文字列エラー")
+                    Else
+                        conn.ConnectionString = settings.ConnectionString
+                        conn.Open()
+                        Using transaction As SqlTransaction = conn.BeginTransaction()
+                            Try
+                                Using cmd As New SqlCommand(sql, conn, transaction)
+                                    'Player
+                                    cmd.Parameters.AddWithValue("@name", Me.NameTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@rub", Me.RubTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@origin_school", Me.Origin_schoolTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@position", Me.PositionTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@TandB", Me.TandBTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@comment", Me.CommentTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@player_id", Me.Player_idTextBox.Text)
+                                    'Pitcher
+                                    cmd.Parameters.AddWithValue("@app", Vw_PitcherResultDataGridView.Rows(0).Cells(3).Value)
+                                    cmd.Parameters.AddWithValue("@ip", Vw_PitcherResultDataGridView.Rows(0).Cells(4).Value)
+                                    cmd.Parameters.AddWithValue("@r", Vw_PitcherResultDataGridView.Rows(0).Cells(5).Value)
+                                    cmd.Parameters.AddWithValue("@er", Vw_PitcherResultDataGridView.Rows(0).Cells(6).Value)
+                                    cmd.Parameters.AddWithValue("@k", Vw_PitcherResultDataGridView.Rows(0).Cells(7).Value)
+                                    cmd.Parameters.AddWithValue("@b", Vw_PitcherResultDataGridView.Rows(0).Cells(8).Value)
+                                    cmd.Parameters.AddWithValue("@w", Vw_PitcherResultDataGridView.Rows(0).Cells(9).Value)
+                                    cmd.Parameters.AddWithValue("@sv", Vw_PitcherResultDataGridView.Rows(0).Cells(10).Value)
+                                    cmd.Parameters.AddWithValue("@Pitcher_id", Me.Player_idTextBox.Text)
+                                    'Batter
+                                    cmd.Parameters.AddWithValue("@ar", AdvancedBatterResultDataGridView.Rows(0).Cells(1).Value)
+                                    cmd.Parameters.AddWithValue("@h", AdvancedBatterResultDataGridView.Rows(0).Cells(4).Value)
+                                    cmd.Parameters.AddWithValue("@lh", AdvancedBatterResultDataGridView.Rows(0).Cells(5).Value)
+                                    cmd.Parameters.AddWithValue("@hr", AdvancedBatterResultDataGridView.Rows(0).Cells(6).Value)
+                                    cmd.Parameters.AddWithValue("@hbp", AdvancedBatterResultDataGridView.Rows(0).Cells(7).Value)
+                                    cmd.Parameters.AddWithValue("@sh", AdvancedBatterResultDataGridView.Rows(0).Cells(8).Value)
+                                    cmd.Parameters.AddWithValue("@ibbandhbp", AdvancedBatterResultDataGridView.Rows(0).Cells(10).Value)
+                                    cmd.Parameters.AddWithValue("@so", AdvancedBatterResultDataGridView.Rows(0).Cells(9).Value)
+                                    cmd.Parameters.AddWithValue("@sb", AdvancedBatterResultDataGridView.Rows(0).Cells(11).Value)
+                                    cmd.Parameters.AddWithValue("@Batter_id", Me.Player_idTextBox.Text)
 
 
-                                cmd.ExecuteNonQuery()
+                                    cmd.ExecuteNonQuery()
 
-                                transaction.Commit()
-                                ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.Message)
-                            MsgBox(ex.StackTrace)
+                                    transaction.Commit()
+                                    ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.Message)
+                                MsgBox(ex.StackTrace)
 
-                        End Try
-                    End Using
+                            End Try
+                        End Using
+                    End If
                 End Using
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -228,25 +242,31 @@ Public Class PlayerCardForm
             Dim datastr As Byte() = ImageToByteArray(PictureBox1.Image)
             Try
                 Using conn As New SqlConnection
-                    conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-                    conn.Open()
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@FileData", datastr)
-                                cmd.Parameters.AddWithValue("@UploadFileName", Filename)
-                                cmd.Parameters.AddWithValue("@Player_id", Player_idTextBox.Text)
-                                cmd.ExecuteNonQuery()
+                    Dim settings As ConnectionStringSettings
+                    settings = ConfigurationManager.ConnectionStrings("Score_management.My.MySettings.PlayerManagementConnectionString")
+                    If settings Is Nothing Then
+                        MsgBox("app.configに未登録、接続文字列エラー")
+                    Else
+                        conn.ConnectionString = settings.ConnectionString
+                        conn.Open()
+                        Using transaction As SqlTransaction = conn.BeginTransaction()
+                            Try
+                                Using cmd As New SqlCommand(sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@FileData", datastr)
+                                    cmd.Parameters.AddWithValue("@UploadFileName", Filename)
+                                    cmd.Parameters.AddWithValue("@Player_id", Player_idTextBox.Text)
+                                    cmd.ExecuteNonQuery()
 
-                                transaction.Commit()
-                                ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
-                            MsgBox(ex.Message)
-                        End Try
-                    End Using
+                                    transaction.Commit()
+                                    ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
+                                MsgBox(ex.Message)
+                            End Try
+                        End Using
+                    End If
                 End Using
 
                 Me.Close()
@@ -301,7 +321,7 @@ Public Class PlayerCardForm
 
 
     ' ---[関数]ドラッグされたものがフォルダーかファイルかを判別
-    Private Function fnc_FileSystemType(ByVal drags() As String) As String
+    Private Function Fnc_FileSystemType(ByVal drags() As String) As String
         Try
             If (System.IO.File.Exists(drags(0)) = True) Then
                 Return "File"
@@ -346,7 +366,7 @@ Public Class PlayerCardForm
         ' --- ドラッグ中のファイルやディレクトリを文字型配列に格納
         Dim Drags() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         ' --- フォルダーかファイルかを判別（FileSystemType)
-        Select Case Me.fnc_FileSystemType(Drags)
+        Select Case Me.Fnc_FileSystemType(Drags)
             Case = "File"
                 ' ---▼ ファイルの場合
                 e.Effect = DragDropEffects.Copy  ' -- コピーを可能にする
@@ -368,7 +388,7 @@ Public Class PlayerCardForm
     End Sub
 
     '入力規制
-    Public Function strjadge() As Boolean
+    Public Function Strjadge() As Boolean
         If NameTextBox.Text.Length = 0 Then
             MsgBox("名前を入力してください")
             Return True

@@ -48,5 +48,9 @@ Public Class LogonForm
 
         Return newProdID
     End Function
+
+    Private Sub LogonForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MsgBox("閲覧者用PASS  : bb   管理者用PASS : aa")
+    End Sub
 End Class
 

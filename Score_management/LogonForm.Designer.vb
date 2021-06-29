@@ -33,6 +33,7 @@ Partial Class LogonForm
         '
         'UserComboBox
         '
+        Me.UserComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.UserComboBox.FormattingEnabled = True
         Me.UserComboBox.Items.AddRange(New Object() {"閲覧者", "管理者"})
         Me.UserComboBox.Location = New System.Drawing.Point(124, 67)
@@ -51,42 +52,44 @@ Partial Class LogonForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(42, 67)
+        Me.Label1.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label1.Location = New System.Drawing.Point(32, 65)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 19)
+        Me.Label1.Size = New System.Drawing.Size(66, 22)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "権限"
+        Me.Label1.Text = "権　　限"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(42, 128)
+        Me.Label2.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label2.Location = New System.Drawing.Point(32, 126)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(67, 19)
+        Me.Label2.Size = New System.Drawing.Size(76, 22)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "パスワード"
         '
         'LogonButton
         '
+        Me.LogonButton.BackColor = System.Drawing.SystemColors.Control
         Me.LogonButton.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.LogonButton.Location = New System.Drawing.Point(315, 60)
+        Me.LogonButton.Location = New System.Drawing.Point(330, 60)
         Me.LogonButton.Name = "LogonButton"
         Me.LogonButton.Size = New System.Drawing.Size(101, 32)
         Me.LogonButton.TabIndex = 4
         Me.LogonButton.Text = "ログオン"
-        Me.LogonButton.UseVisualStyleBackColor = True
+        Me.LogonButton.UseVisualStyleBackColor = False
         '
         'Button2
         '
+        Me.Button2.BackColor = System.Drawing.SystemColors.Control
         Me.Button2.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Button2.Location = New System.Drawing.Point(315, 121)
+        Me.Button2.Location = New System.Drawing.Point(330, 121)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(101, 32)
         Me.Button2.TabIndex = 5
         Me.Button2.Text = "キャンセル"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'Label3
         '
@@ -102,6 +105,7 @@ Partial Class LogonForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(465, 204)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button2)

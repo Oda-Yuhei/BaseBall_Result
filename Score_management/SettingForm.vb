@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Configuration
 Public Class SettingForm
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
         Select Case DirectCast(sender, CheckBox).CheckState
@@ -9,7 +10,6 @@ Public Class SettingForm
                 TextBox1.Visible = False
                 TextBox2.Visible = False
         End Select
-
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
@@ -21,27 +21,25 @@ Public Class SettingForm
                 TextBox3.Visible = False
                 TextBox4.Visible = False
         End Select
-
     End Sub
-
     Private Sub EnterButton_Click(sender As Object, e As EventArgs) Handles EnterButton.Click
-        Dim num As Integer = pattern()
+        Dim num As Integer = Pattern()
         If num = 1 Then
 
-            If nulljudge(num) = 1 Then
+            If Nulljudge(num) = 1 Then
                 ConnectSQLPass2()
                 ConnectSQLPass3()
             Else
                 Return
             End If
         ElseIf num = 2 Then '閲覧者権限のみ選択
-            If nulljudge(num) = 1 Then
+            If Nulljudge(num) = 1 Then
                 ConnectSQLPass2()
             Else
                 Return
             End If
         ElseIf num = 3 Then '管理者権限のみ選択
-            If nulljudge(num) = 1 Then
+            If Nulljudge(num) = 1 Then
                 ConnectSQLPass3()
             Else
                 Return
@@ -57,25 +55,32 @@ Public Class SettingForm
     Public Sub ConnectSQLPass2() '閲覧者のみ
         Try
             Using conn As New SqlConnection
-                conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-                conn.Open()
-                Dim sql As String = "UPDATE PWTB SET PW = @pass WHERE Authority = 0"
-                Using transaction As SqlTransaction = conn.BeginTransaction()
-                    Try
-                        Using cmd As New SqlCommand(sql, conn, transaction)
-                            cmd.Parameters.AddWithValue("@pass", Me.TextBox3.Text)
-                            cmd.ExecuteNonQuery()
+                Dim settings As ConnectionStringSettings
+                settings = ConfigurationManager.ConnectionStrings("Score_management.My.MySettings.PlayerManagementConnectionString")
+                If settings Is Nothing Then
+                    MsgBox("App.configに未登録、接続文字エラー")
 
-                            transaction.Commit()
-                            MsgBox("パスワードを更新しました")
+                Else
+                    conn.ConnectionString = settings.ConnectionString
+                    conn.Open()
+                    Dim sql As String = "UPDATE PWTB SET PW = @pass WHERE Authority = 0"
+                    Using transaction As SqlTransaction = conn.BeginTransaction()
+                        Try
+                            Using cmd As New SqlCommand(sql, conn, transaction)
+                                cmd.Parameters.AddWithValue("@pass", Me.TextBox3.Text)
+                                cmd.ExecuteNonQuery()
 
-                        End Using
-                    Catch ex As Exception
-                        transaction.Rollback()
-                        MsgBox(ex.StackTrace)
+                                transaction.Commit()
+                                MsgBox("パスワードを更新しました")
 
-                    End Try
-                End Using
+                            End Using
+                        Catch ex As Exception
+                            transaction.Rollback()
+                            MsgBox(ex.StackTrace)
+
+                        End Try
+                    End Using
+                End If
             End Using
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -111,7 +116,7 @@ Public Class SettingForm
             MsgBox(ex.Message)
         End Try
     End Sub
-    Public Function nulljudge(num As Integer) As Integer
+    Public Function Nulljudge(num As Integer) As Integer
         Dim count As Integer = 1
         If num = 1 Then
             If TextBox1.Text = "" Then
@@ -148,7 +153,7 @@ Public Class SettingForm
         Return count
 
     End Function
-    Public Function pattern() As Integer
+    Public Function Pattern() As Integer
         If (CheckBox1.Checked = True) And (CheckBox2.Checked = True) Then
             Return 1
         ElseIf (CheckBox1.Checked = True) And (CheckBox2.Checked = False) Then

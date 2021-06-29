@@ -1,132 +1,132 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
+Imports System.Configuration
 Public Class RegisterPlayerForm
     Public ByteArray As Byte()
     Private ID As Integer = 0
     Private Sub EnterButton_Click(sender As Object, e As EventArgs) Handles EnterButton.Click
+        Dim connectionkey As String = "Score_management.My.MySettings.PlayerManagementConnectionString"
+
         If intjadge() Then '成績textboxの入力が正しいのか判断
             Return
         End If
-        If strjadge() Then '個人情報textboxの入力が正しいのか判断
+        If Strjadge() Then '個人情報textboxの入力が正しいのか判断
             Return
         End If
-        If Not Chk_Hiragana(RubTextBox.Text) Then
+        If Not Chk_Hiragana(RubTextBox.Text) Then 'ふりがな欄のひらがな判定
             Return
         End If
         Dim result As DialogResult = MessageBox.Show("データを登録します", "登録", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2)
         If result = DialogResult.OK Then
             Try
                 Using conn As New SqlConnection
-                    conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-                    conn.Open()
+                    Dim settings As ConnectionStringSettings
+                    settings = ConfigurationManager.ConnectionStrings("Score_management.My.MySettings.PlayerManagementConnectionString")
+                    If settings Is Nothing Then
+                        MsgBox("App.configに未登録、接続文字列エラー")
+                    Else
+                        conn.ConnectionString = settings.ConnectionString
+                        conn.Open()
 
-                    Dim Sql As String = "INSERT INTO Pitcher VALUES(@app, @ip, @r, @er, @k, @b, @w, @sv)"
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(Sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@app", Me.APPTextBox.Text)
-                                cmd.Parameters.AddWithValue("@ip", Me.IPTextBox.Text)
-                                cmd.Parameters.AddWithValue("@r", Me.RTextBox.Text)
-                                cmd.Parameters.AddWithValue("@er", Me.ERTextBox.Text)
-                                cmd.Parameters.AddWithValue("@k", Me.KTextBox.Text)
-                                cmd.Parameters.AddWithValue("@b", Me.BTextBox.Text)
-                                cmd.Parameters.AddWithValue("@w", Me.WTextBox.Text)
-                                cmd.Parameters.AddWithValue("@sv", Me.SVTextBox.Text)
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
+                        Dim Sql As String = "INSERT INTO Pitcher VALUES(@app, @ip, @r, @er, @k, @b, @w, @sv)"
+                        Using transaction As SqlTransaction = conn.BeginTransaction()
+                            Try
+                                Using cmd As New SqlCommand(Sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@app", Me.APPTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@ip", Me.IPTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@r", Me.RTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@er", Me.ERTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@k", Me.KTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@b", Me.BTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@w", Me.WTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@sv", Me.SVTextBox.Text)
+                                    cmd.ExecuteNonQuery()
 
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
 
-                        End Try
-                    End Using
-
-
-                    Sql = "INSERT INTO Batter VALUES(@ar, @h, @lh, @hr, @hbp, @sh, @ibb_hbp, @so, @sb)"
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(Sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@ar", Me.ARTextBox.Text)
-                                cmd.Parameters.AddWithValue("@h", Me.HTextBox.Text)
-                                cmd.Parameters.AddWithValue("@lh", Me.LHTextBox.Text)
-                                cmd.Parameters.AddWithValue("@hr", Me.HRTextBox.Text)
-                                cmd.Parameters.AddWithValue("@hbp", Me.HBPTextBox.Text)
-                                cmd.Parameters.AddWithValue("@sh", Me.SHTextBox.Text)
-                                cmd.Parameters.AddWithValue("@ibb_hbp", Me.IBBandHBPTextBox.Text)
-                                cmd.Parameters.AddWithValue("@so", Me.SOTextBox.Text)
-                                cmd.Parameters.AddWithValue("@sb", Me.SBTextBox.Text)
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
-
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
-
-                        End Try
-                    End Using
-
-                    Sql = "INSERT INTO Player VALUES(@name, @rub, @origin_school, @position, @TandB, @comment )"
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(Sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@name", Me.NameTextBox.Text)
-                                cmd.Parameters.AddWithValue("@rub", Me.RubTextBox.Text)
-                                cmd.Parameters.AddWithValue("@origin_school", Me.Origin_schoolTextBox.Text)
-                                cmd.Parameters.AddWithValue("@position", Me.PositionLabel.Text)
-                                cmd.Parameters.AddWithValue("@TandB", Me.TandBComboBox.Text)
-                                cmd.Parameters.AddWithValue("@comment", Me.CommentTextBox.Text)
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
-
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
-
-                        End Try
-                    End Using
+                            End Try
 
 
+                            Sql = "INSERT INTO Batter VALUES(@ar, @h, @lh, @hr, @hbp, @sh, @ibb_hbp, @so, @sb)"
 
-                    Sql = "INSERT INTO UploadFile(FileID,FileData,UploadFileName) VALUES(NEWID(), @FileData, @UploadFileName)"
-                    Dim datastr As Byte() = ImageToByteArray(PictureBox1.Image)
+                            Try
+                                Using cmd As New SqlCommand(Sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@ar", Me.ARTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@h", Me.HTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@lh", Me.LHTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@hr", Me.HRTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@hbp", Me.HBPTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@sh", Me.SHTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@ibb_hbp", Me.IBBandHBPTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@so", Me.SOTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@sb", Me.SBTextBox.Text)
+                                    cmd.ExecuteNonQuery()
 
-                    Dim Filename As String = ID.ToString & Me.NameTextBox.Text & ".jpg"
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
 
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(Sql, conn, transaction)
-                                cmd.Parameters.AddWithValue("@FileData", datastr)
-                                cmd.Parameters.AddWithValue("@UploadFileName", Filename)
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
+                            End Try
 
-                            End Using
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
-                        End Try
-                    End Using
-                    Sql = "INSERT INTO  Player_Result (Player_id, Batter_id,Pitcher_id,Image_ID) VALUES((SELECT Max(Player_id) FROM Player),(SELECT Max(Batter_id) FROM Batter),(SELECT Max(Pitcher_id) FROM Pitcher),(SELECT Max(Image_id) From UploadFile))"
-                    Using transaction As SqlTransaction = conn.BeginTransaction()
-                        Try
-                            Using cmd As New SqlCommand(Sql, conn, transaction)
-                                cmd.ExecuteNonQuery()
-                                transaction.Commit()
 
-                            End Using
-                            MsgBox("無事に登録が完了しました")
-                            Me.Close()
-                        Catch ex As Exception
-                            transaction.Rollback()
-                            MsgBox(ex.StackTrace)
+                            Sql = "INSERT INTO Player VALUES(@name, @rub, @origin_school, @position, @TandB, @comment )"
 
-                        End Try
+                            Try
+                                Using cmd As New SqlCommand(Sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@name", Me.NameTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@rub", Me.RubTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@origin_school", Me.Origin_schoolTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@position", Me.PositionLabel.Text)
+                                    cmd.Parameters.AddWithValue("@TandB", Me.TandBComboBox.Text)
+                                    cmd.Parameters.AddWithValue("@comment", Me.CommentTextBox.Text)
+                                    cmd.ExecuteNonQuery()
 
-                    End Using
+
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
+
+                            End Try
+
+                            Sql = "INSERT INTO UploadFile(FileID,FileData,UploadFileName) VALUES(NEWID(), @FileData, @UploadFileName)"
+                            Dim datastr As Byte() = ImageToByteArray(PictureBox1.Image)
+                            Dim Filename As String = ID.ToString & Me.NameTextBox.Text & ".jpg"
+
+                            Try
+                                Using cmd As New SqlCommand(Sql, conn, transaction)
+                                    cmd.Parameters.AddWithValue("@FileData", datastr)
+                                    cmd.Parameters.AddWithValue("@UploadFileName", Filename)
+                                    cmd.ExecuteNonQuery()
+
+                                End Using
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
+                            End Try
+
+                            Sql = "INSERT INTO  Player_Result (Player_id, Batter_id,Pitcher_id,Image_ID) VALUES((SELECT Max(Player_id) FROM Player),(SELECT Max(Batter_id) FROM Batter),(SELECT Max(Pitcher_id) FROM Pitcher),(SELECT Max(Image_id) From UploadFile))"
+
+                            Try
+                                Using cmd As New SqlCommand(Sql, conn, transaction)
+                                    cmd.ExecuteNonQuery()
+                                    transaction.Commit()
+
+                                End Using
+                                MsgBox("無事に登録が完了しました")
+                                Me.Close()
+                            Catch ex As Exception
+                                transaction.Rollback()
+                                MsgBox(ex.StackTrace)
+
+                            End Try
+
+                        End Using
+                    End If
                 End Using
 
             Catch ex As Exception
@@ -137,7 +137,7 @@ Public Class RegisterPlayerForm
             Return
         End If
     End Sub
-    Public Function strjadge() As Boolean
+    Public Function Strjadge() As Boolean
         If NameTextBox.Text.Length = 0 Then
             MsgBox("名前を入力してください")
             Return True
@@ -245,7 +245,7 @@ Public Class RegisterPlayerForm
 
 
     ' ---[関数]ドラッグされたものがフォルダーかファイルかを判別
-    Private Function fnc_FileSystemType(ByVal drags() As String) As String
+    Private Function Fnc_FileSystemType(ByVal drags() As String) As String
         If (System.IO.File.Exists(drags(0)) = True) Then
             Return "File"
         ElseIf (System.IO.Directory.Exists(drags(0)) = True) Then
@@ -296,7 +296,7 @@ Public Class RegisterPlayerForm
         ' --- ドラッグ中のファイルやディレクトリを文字型配列に格納
         Dim Drags() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         ' --- フォルダーかファイルかを判別（FileSystemType)
-        Select Case Me.fnc_FileSystemType(Drags)
+        Select Case Me.Fnc_FileSystemType(Drags)
             Case = "File"
                 ' ---▼ ファイルの場合
                 e.Effect = DragDropEffects.Copy  ' -- コピーを可能にする

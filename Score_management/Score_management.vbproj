@@ -58,6 +58,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -107,12 +108,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvancedSearchForm.Designer.vb">
-      <DependentUpon>AdvancedSearchForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AdvancedSearchForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ChartForm.Designer.vb">
       <DependentUpon>ChartForm.vb</DependentUpon>
     </Compile>
@@ -146,12 +141,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="PersonalEditing.Designer.vb">
-      <DependentUpon>PersonalEditing.vb</DependentUpon>
-    </Compile>
-    <Compile Include="PersonalEditing.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="PlayerCardForm.Designer.vb">
       <DependentUpon>PlayerCardForm.vb</DependentUpon>
@@ -197,9 +186,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AdvancedSearchForm.resx">
-      <DependentUpon>AdvancedSearchForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ChartForm.resx">
       <DependentUpon>ChartForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -214,9 +200,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PersonalEditing.resx">
-      <DependentUpon>PersonalEditing.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerCardForm.resx">
       <DependentUpon>PlayerCardForm.vb</DependentUpon>
