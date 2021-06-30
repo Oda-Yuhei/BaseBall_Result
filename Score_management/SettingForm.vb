@@ -1,26 +1,14 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Configuration
 Public Class SettingForm
-    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
-        Select Case DirectCast(sender, CheckBox).CheckState
-            Case CheckState.Checked
-                TextBox1.Visible = True
-                TextBox2.Visible = True
-            Case CheckState.Unchecked
-                TextBox1.Visible = False
-                TextBox2.Visible = False
-        End Select
-    End Sub
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged, CheckBox1.CheckedChanged
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        Select Case DirectCast(sender, CheckBox).CheckState
-            Case CheckState.Checked
-                TextBox3.Visible = True
-                TextBox4.Visible = True
-            Case CheckState.Unchecked
-                TextBox3.Visible = False
-                TextBox4.Visible = False
-        End Select
+        TextBox1.Visible = CheckBox2.Checked
+        TextBox2.Visible = CheckBox2.Checked
+
+        TextBox3.Visible = CheckBox1.Checked
+        TextBox4.Visible = CheckBox1.Checked
+
     End Sub
     Private Sub EnterButton_Click(sender As Object, e As EventArgs) Handles EnterButton.Click
         Dim num As Integer = Pattern()
@@ -52,7 +40,7 @@ Public Class SettingForm
 
         End If
     End Sub
-    Public Sub ConnectSQLPass2() '閲覧者のみ
+    Public Sub ConnectSQLPass2() '閲覧者のみ更新
         Try
             Using conn As New SqlConnection
                 Dim settings As ConnectionStringSettings
@@ -88,34 +76,45 @@ Public Class SettingForm
     End Sub
 
 
-    Public Sub ConnectSQLPass3() '管理者のみ
+    Public Sub ConnectSQLPass3() '管理者のみ更新
 
         Try
             Using conn As New SqlConnection
-                conn.ConnectionString = "Data Source=PC-S009;Initial Catalog=PlayerManagement;Integrated Security=True"
-                conn.Open()
-                Dim sql As String = "UPDATE PWTB SET PW = @pass WHERE Authority = 1"
-                Using transaction As SqlTransaction = conn.BeginTransaction()
-                    Try
-                        Using cmd As New SqlCommand(sql, conn, transaction)
-                            cmd.Parameters.AddWithValue("@pass", Me.TextBox1.Text)
-                            cmd.ExecuteNonQuery()
+                Dim settings As ConnectionStringSettings
+                settings = ConfigurationManager.ConnectionStrings("Score_management.My.MySettings.PlayerManagementConnectionString")
+                If settings Is Nothing Then
+                    MsgBox("app.configに未登録、接続文字列エラー")
+                Else
+                    conn.ConnectionString = settings.ConnectionString
+                    conn.Open()
+                    Dim sql As String = "UPDATE PWTB SET PW = @pass WHERE Authority = 1"
+                    Using transaction As SqlTransaction = conn.BeginTransaction()
+                        Try
+                            Using cmd As New SqlCommand(sql, conn, transaction)
+                                cmd.Parameters.AddWithValue("@pass", Me.TextBox1.Text)
+                                cmd.ExecuteNonQuery()
 
-                            transaction.Commit()
-                            MsgBox("パスワードを更新しました")
+                                transaction.Commit()
+                                MsgBox("パスワードを更新しました")
 
-                        End Using
-                    Catch ex As Exception
-                        transaction.Rollback()
-                        MsgBox(ex.StackTrace)
+                            End Using
+                        Catch ex As Exception
+                            transaction.Rollback()
+                            MsgBox(ex.StackTrace)
 
-                    End Try
-                End Using
+                        End Try
+                    End Using
+                End If
             End Using
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+    ''' <summary>
+    ''' Puttern()から数値を受け取る。
+    ''' </summary>
+    ''' <param name="num"></param>
+    ''' <returns></returns>
     Public Function Nulljudge(num As Integer) As Integer
         Dim count As Integer = 1
         If num = 1 Then
@@ -153,16 +152,23 @@ Public Class SettingForm
         Return count
 
     End Function
+    Public Enum Patterns
+        Both_change = 1
+        ViewPerson_Authority_change
+        Manager_Authority_change
+        No_change
+    End Enum
     Public Function Pattern() As Integer
-        If (CheckBox1.Checked = True) And (CheckBox2.Checked = True) Then
-            Return 1
-        ElseIf (CheckBox1.Checked = True) And (CheckBox2.Checked = False) Then
-            Return 2
-        ElseIf (CheckBox1.Checked = False) And (CheckBox2.Checked = True) Then
-            Return 3
-        ElseIf (CheckBox1.Checked = False) And (CheckBox2.Checked = False) Then
-            Return 4
+
+        If CheckBox1.Checked And CheckBox2.Checked Then
+            Return Patterns.Both_change
+        ElseIf CheckBox1.Checked And Not CheckBox2.Checked Then
+            Return Patterns.ViewPerson_Authority_change
+        ElseIf CheckBox2.Checked And Not CheckBox1.Checked Then
+            Return Patterns.Manager_Authority_change
+        ElseIf Not CheckBox1.Checked And Not CheckBox2.Checked Then
+            Return Patterns.No_change
         End If
-        Return 5
+        Return Patterns.No_change
     End Function
 End Class

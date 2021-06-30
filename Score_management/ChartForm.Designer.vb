@@ -107,7 +107,7 @@ Partial Class ChartForm
         Me.PositionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.PositionComboBox.Font = New System.Drawing.Font("Meiryo UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.PositionComboBox.FormattingEnabled = True
-        Me.PositionComboBox.Items.AddRange(New Object() {"全て", "投手", "キャッチャー", "ファースト", "セカンド", "ショート", "サード", "野手", "内野手", "外野手"})
+        Me.PositionComboBox.Items.AddRange(New Object() {"全て", "投手", "キャッチャー", "ファースト", "セカンド", "ショート", "サード", "外野手"})
         Me.PositionComboBox.Location = New System.Drawing.Point(156, 24)
         Me.PositionComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PositionComboBox.Name = "PositionComboBox"
