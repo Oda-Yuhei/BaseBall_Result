@@ -20,11 +20,8 @@ Public Class LogonForm
         End If
 
         If pas = PassTextBox.Text Then
-
             MenuForm.Visible = True
             Me.Visible = False
-
-
         Else
             MsgBox("パスワードが間違っていいます。" & vbCrLf & vbCrLf & "もしくは権限が一致していません。")
         End If

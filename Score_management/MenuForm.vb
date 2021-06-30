@@ -33,5 +33,7 @@
             SettingButton.Visible = True
             RegisterButton.Visible = True
         End If
+        SettingButton.Visible = Not LogonForm.Auth
+        RegisterButton.Visible = Not LogonForm.Auth
     End Sub
 End Class

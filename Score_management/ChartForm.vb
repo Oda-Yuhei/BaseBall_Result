@@ -165,34 +165,15 @@ Public Class ChartForm
 
     End Sub
     Private Sub Pitcher_Result_CheckedChanged(sender As Object, e As EventArgs) Handles Pitcher_Result.CheckedChanged, Basic_information.CheckedChanged, Batter_Result.CheckedChanged
-        Dim button = CType(sender, RadioButton)
-        Select Case True
-            Case Pitcher_Result.Checked
-                Me.DefaultDataGridView.Visible = False
-                Me.PitcherResultDataGridView.Visible = True
-                Me.BatterResultDataGridView.Visible = False
+        'Gridの表示切替
+        Me.DefaultDataGridView.Visible = Basic_information.Checked
+        Me.PitcherResultDataGridView.Visible = Pitcher_Result.Checked
+        Me.BatterResultDataGridView.Visible = Batter_Result.Checked
+        'コントロールの表示切替
+        Me.PositionComboBox.Visible = Basic_information.Checked
+        Me.name_ComboBox.Visible = Basic_information.Checked
+        Me.EnterButton.Visible = Basic_information.Checked
 
-                Me.PositionComboBox.Visible = False
-                Me.name_ComboBox.Visible = False
-                Me.EnterButton.Visible = False
-            Case Basic_information.Checked
-                Me.DefaultDataGridView.Visible = True
-                Me.PitcherResultDataGridView.Visible = False
-                Me.BatterResultDataGridView.Visible = False
-
-                Me.PositionComboBox.Visible = True
-                Me.name_ComboBox.Visible = True
-                Me.EnterButton.Visible = True
-            Case Batter_Result.Checked
-                Me.DefaultDataGridView.Visible = False
-                Me.PitcherResultDataGridView.Visible = False
-                Me.BatterResultDataGridView.Visible = True
-
-                Me.name_ComboBox.Visible = False
-                Me.PositionComboBox.Visible = False
-                Me.EnterButton.Visible = False
-
-        End Select
     End Sub
     Private Sub DefaultDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DefaultDataGridView.CellContentClick, BatterResultDataGridView.CellContentClick, PitcherResultDataGridView.CellContentClick
         Dim data = CType(sender, DataGridView)

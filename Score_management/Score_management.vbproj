@@ -156,16 +156,6 @@
     <Compile Include="PlayerManagementDataSet.vb">
       <DependentUpon>PlayerManagementDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="PlayerManagementDataSet1.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlayerManagementDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="PlayerManagementDataSet2.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PlayerManagementDataSet2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="RankingForm.Designer.vb">
       <DependentUpon>RankingForm.vb</DependentUpon>
     </Compile>
@@ -236,28 +226,6 @@
     </None>
     <None Include="PlayerManagementDataSet.xss">
       <DependentUpon>PlayerManagementDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="PlayerManagementDataSet1.xsc">
-      <DependentUpon>PlayerManagementDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="PlayerManagementDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PlayerManagementDataSet1.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PlayerManagementDataSet1.xss">
-      <DependentUpon>PlayerManagementDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="PlayerManagementDataSet2.xsc">
-      <DependentUpon>PlayerManagementDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="PlayerManagementDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PlayerManagementDataSet2.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PlayerManagementDataSet2.xss">
-      <DependentUpon>PlayerManagementDataSet2.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
