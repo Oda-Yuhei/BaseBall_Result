@@ -30,7 +30,8 @@
         End Try
     End Sub
 
-    Private Sub TopKDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles TopKDataGridView.CellContentClick, TopKBBViewDataGridView.CellContentClick, TopERADataGridView.CellContentClick, TopSBViewDataGridView.CellContentClick, TopSODataGridView.CellContentClick, TopHRDataGridView.CellContentClick, TopHitterViewDataGridView.CellContentClick, TopOBPDataGridView.CellContentClick, TopAverageDataGridView.CellContentClick
+    Private Sub TopKDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) _
+            Handles TopKDataGridView.CellContentClick, TopKBBViewDataGridView.CellContentClick, TopERADataGridView.CellContentClick, TopSBViewDataGridView.CellContentClick, TopSODataGridView.CellContentClick, TopHRDataGridView.CellContentClick, TopHitterViewDataGridView.CellContentClick, TopOBPDataGridView.CellContentClick, TopAverageDataGridView.CellContentClick
         Dim data = CType(sender, DataGridView)
         Dim cardform As New PlayerCardForm
         cardform.Show()
@@ -41,4 +42,6 @@
         cardform.Vw_PitcherResultTableAdapter.FillByAdvancedPitcher(cardform.PlayerManagementDataSet.vw_PitcherResult, New System.Nullable(Of Integer)(PlayerID))
         cardform.Vw_BatterResultTableAdapter.FillByAdvancedBatter(cardform.PlayerManagementDataSet.vw_BatterResult, New System.Nullable(Of Integer)(PlayerID))
     End Sub
+
+
 End Class

@@ -138,6 +138,7 @@ Partial Class RankingForm
         Me.TeamAVGOBPViewTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.TeamAVGOBPViewTableAdapter()
         Me.TeamAVGERAViewTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.TeamAVGERAViewTableAdapter()
         Me.TeamAVGKBBViewTableAdapter = New Score_management.PlayerManagementDataSetTableAdapters.TeamAVGKBBViewTableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.TopAverageDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TopAverageViewBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PlayerManagementDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1183,12 +1184,24 @@ Partial Class RankingForm
         '
         Me.TeamAVGKBBViewTableAdapter.ClearBeforeFill = True
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.SystemColors.Control
+        Me.Button1.Font = New System.Drawing.Font("Meiryo UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Button1.Location = New System.Drawing.Point(842, 791)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(140, 51)
+        Me.Button1.TabIndex = 39
+        Me.Button1.Text = "ベストナイン"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'RankingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1498, 890)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TeamAVGOBPViewDataGridView)
         Me.Controls.Add(Me.DataGridView6)
         Me.Controls.Add(Me.DataGridView4)
@@ -1223,6 +1236,7 @@ Partial Class RankingForm
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TopAverageDataGridView)
         Me.MinimumSize = New System.Drawing.Size(1075, 707)
+
         Me.Text = "ランキング"
         CType(Me.TopAverageDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TopAverageViewBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1391,4 +1405,5 @@ Partial Class RankingForm
     Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As Button
 End Class

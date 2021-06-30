@@ -198,7 +198,7 @@ Partial Class ChartForm
         Me.DefaultDataGridView.RowHeadersVisible = False
         Me.DefaultDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
         Me.DefaultDataGridView.RowTemplate.Height = 24
-        Me.DefaultDataGridView.Size = New System.Drawing.Size(1316, 537)
+        Me.DefaultDataGridView.Size = New System.Drawing.Size(1016, 537)
         Me.DefaultDataGridView.TabIndex = 0
         '
         'ID
@@ -305,7 +305,7 @@ Partial Class ChartForm
         Me.BatterResultDataGridView.RowHeadersVisible = False
         Me.BatterResultDataGridView.RowHeadersWidth = 51
         Me.BatterResultDataGridView.RowTemplate.Height = 24
-        Me.BatterResultDataGridView.Size = New System.Drawing.Size(1316, 537)
+        Me.BatterResultDataGridView.Size = New System.Drawing.Size(1016, 537)
         Me.BatterResultDataGridView.TabIndex = 10
         '
         'PlayeridDataGridViewTextBoxColumn1
@@ -524,7 +524,7 @@ Partial Class ChartForm
         Me.PitcherResultDataGridView.RowHeadersVisible = False
         Me.PitcherResultDataGridView.RowHeadersWidth = 51
         Me.PitcherResultDataGridView.RowTemplate.Height = 24
-        Me.PitcherResultDataGridView.Size = New System.Drawing.Size(1316, 537)
+        Me.PitcherResultDataGridView.Size = New System.Drawing.Size(1016, 537)
         Me.PitcherResultDataGridView.TabIndex = 10
         '
         'DataGridViewTextBoxColumn1
@@ -694,7 +694,7 @@ Partial Class ChartForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 19.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1343, 681)
+        Me.ClientSize = New System.Drawing.Size(1043, 681)
         Me.Controls.Add(Me.Batter_Result)
         Me.Controls.Add(Me.Pitcher_Result)
         Me.Controls.Add(Me.Basic_information)

@@ -21,12 +21,21 @@ Public Class ChartForm
             Dim str As String
             str = name_ComboBox.SelectedItem
             Dim fillter_position As String = PositionComboBox.SelectedItem
+            Dim name As String = name_ComboBox.Text
+            Dim position As String = PositionComboBox.Text
+
+            If name = "" Then
+                name = "全て"
+            End If
+            If position = "" Then
+                position = "全て"
+            End If
             'defaultDataGridViewをsearch
-            If Not name_ComboBox.Text = "全て" And PositionComboBox.Text = "全て" Then
+            If Not name = "全て" And position = "全て" Then
                 Initial_sarch(str)
-            ElseIf name_ComboBox.Text = "全て" And Not PositionComboBox.Text = "全て" Then
+            ElseIf name = "全て" And Not Position = "全て" Then
                 Position_sarch(fillter_position, 1)
-            ElseIf name_ComboBox.Text = "全て" And PositionComboBox.Text = "全て" Then
+            ElseIf name = "全て" And Position = "全て" Then
                 Me.Vw_PlayerlistTableAdapter.Fill(Me.PlayerManagementDataSet.vw_Playerlist)
             ElseIf fillter_position = Nothing And str = Nothing Then
                 Return
@@ -73,7 +82,6 @@ Public Class ChartForm
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
     End Sub
-
     Public Sub Initial_sarch(Initialname As String)
         Initialname = Initialname.Substring(0, 1)
         Gojuon(Initialname)

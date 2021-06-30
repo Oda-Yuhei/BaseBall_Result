@@ -2,6 +2,7 @@
 Imports System.Text.RegularExpressions
 Imports System.Configuration
 Public Class PlayerCardForm
+    Public select_position As New List(Of String)
     Private IsImage As Boolean
     Public ByteArray As Byte()
     Public ID As String
@@ -161,7 +162,7 @@ Public Class PlayerCardForm
     End Sub
 
     Private Sub Button_Click(sender As Object, e As EventArgs) Handles Button.Click
-        If strjadge() Then '個人情報textboxの入力が正しいのか判断
+        If Strjadge() Then '個人情報textboxの入力が正しいのか判断
             Return
         End If
         If Not Chk_Hiragana(RubTextBox.Text) Then
@@ -215,9 +216,7 @@ Public Class PlayerCardForm
                                     cmd.Parameters.AddWithValue("@sb", AdvancedBatterResultDataGridView.Rows(0).Cells(11).Value)
                                     cmd.Parameters.AddWithValue("@Batter_id", Me.Player_idTextBox.Text)
 
-
                                     cmd.ExecuteNonQuery()
-
                                     transaction.Commit()
                                     ChartForm.Vw_PlayerlistTableAdapter.Fill(ChartForm.PlayerManagementDataSet.vw_Playerlist)
                                 End Using
@@ -225,7 +224,6 @@ Public Class PlayerCardForm
                                 transaction.Rollback()
                                 MsgBox(ex.Message)
                                 MsgBox(ex.StackTrace)
-
                             End Try
                         End Using
                     End If
@@ -234,7 +232,6 @@ Public Class PlayerCardForm
                 MsgBox(ex.Message)
                 MsgBox(ex.StackTrace)
             End Try
-
 
             sql = "UPDATE UploadFile SET FileData = @FileData, UploadFileName = @UploadFileName WHERE Image_id = @Player_id"
             'sql = "INSERT INTO UploadFile(FileID,FileData,UploadFileName,Player_id) VALUES( NEWID(), @FileData,@UploadFileName,@Player_id)"
@@ -287,7 +284,6 @@ Public Class PlayerCardForm
         Dim b As Byte() = CType(imgconv.ConvertTo(img, GetType(Byte())), Byte())
         Return b
     End Function
-    Public select_position As New List(Of String)
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PositionComboBox.SelectedIndexChanged
         Dim str As String
         str = PositionComboBox.Text
@@ -308,8 +304,6 @@ Public Class PlayerCardForm
             Return True
         End If
     End Function
-
-
     Public Sub Select_Tostring()
         Dim str As String = ""
         For Each i In select_position
@@ -318,7 +312,6 @@ Public Class PlayerCardForm
         Dim Tstr As String = str.TrimEnd(CType(",", Char))
         PositionTextBox.Text = Tstr
     End Sub
-
 
     ' ---[関数]ドラッグされたものがフォルダーかファイルかを判別
     Private Function Fnc_FileSystemType(ByVal drags() As String) As String
@@ -331,10 +324,9 @@ Public Class PlayerCardForm
                 Return "None"
             End If
         Catch ex As Exception
-
+            Return Nothing
         End Try
     End Function
-
 
     ' ---[関数]画像とみなすか？
     Private Function fnc_IsImage(ByVal fileName As String) As Boolean

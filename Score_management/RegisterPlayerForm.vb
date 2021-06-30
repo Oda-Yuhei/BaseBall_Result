@@ -77,9 +77,9 @@ Public Class RegisterPlayerForm
 
                             Try
                                 Using cmd As New SqlCommand(Sql, conn, transaction)
-                                    cmd.Parameters.AddWithValue("@name", Me.NameTextBox.Text)
-                                    cmd.Parameters.AddWithValue("@rub", Me.RubTextBox.Text)
-                                    cmd.Parameters.AddWithValue("@origin_school", Me.Origin_schoolTextBox.Text)
+                                    cmd.Parameters.AddWithValue("@name", Notpadding(Me.NameTextBox.Text))
+                                    cmd.Parameters.AddWithValue("@rub", Notpadding(Me.RubTextBox.Text))
+                                    cmd.Parameters.AddWithValue("@origin_school", Notpadding(Me.Origin_schoolTextBox.Text))
                                     cmd.Parameters.AddWithValue("@position", Me.PositionLabel.Text)
                                     cmd.Parameters.AddWithValue("@TandB", Me.TandBComboBox.Text)
                                     cmd.Parameters.AddWithValue("@comment", Me.CommentTextBox.Text)
@@ -338,4 +338,8 @@ Public Class RegisterPlayerForm
         End Try
 
     End Sub
+    Public Function Notpadding(str As String) As String
+        Dim Rstr As String = str.Replace(" ", "")
+        Return Rstr
+    End Function
 End Class
