@@ -159,7 +159,6 @@ Public Class SettingForm
         No_change
     End Enum
     Public Function Pattern() As Integer
-
         If CheckBox1.Checked And CheckBox2.Checked Then
             Return Patterns.Both_change
         ElseIf CheckBox1.Checked And Not CheckBox2.Checked Then
